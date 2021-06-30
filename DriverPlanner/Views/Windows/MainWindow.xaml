@@ -1,0 +1,36 @@
+﻿<Window x:Class="Driver_Planner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Driver_Planner" 
+        xmlns:pages="clr-namespace:Driver_Planner.Views.Pages"
+        mc:Ignorable="d"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/" 
+        xmlns:vm="clr-namespace:Driver_Planner.ViewModels"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Icon="..\..\Resources\Icons\road_solid.ico"
+        Title="Driver Planner" 
+        Width="800"
+        
+        Height="520" 
+        MaxWidth="800"
+        MaxHeight="520" WindowStyle="ThreeDBorderWindow" ResizeMode="CanMinimize">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <ResourceDictionary Source="../../Resources/Styles/Style.xaml"/>
+    </Window.Resources>
+
+
+    <Grid Background="{StaticResource WorkingSpaceBG}">
+        <ContentControl VerticalAlignment="Center" Content="{Binding CurrentViewModel}"/>
+        
+        
+    </Grid>
+</Window>

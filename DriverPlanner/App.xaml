@@ -1,0 +1,107 @@
+﻿<Application x:Class="Driver_Planner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Driver_Planner.ViewModels"
+             xmlns:view="clr-namespace:Driver_Planner.Views.Pages"
+             xmlns:local="clr-namespace:Driver_Planner" 
+             xmlns:view1="clr-namespace:DriverPlanner.Views.Pages"
+             StartupUri="Views/Windows/MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Style.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/DatePicker.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/NavigationMenu.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ProfileStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/CustomCalendar.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/MainWorkingPageStyles.xaml"/>
+
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:CreateCarViewModel}">
+                <view1:CreateCarView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:CheckCarViewModel}">
+                <view1:CheckCarView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:OverviewInstructorViewModel}">
+                <view1:OverViewInstructorView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:CreateInstructorViewModel}">
+                <view1:CreateInstructorPage/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:UsersExplorerViewModel}">
+                <view1:UsersExplorerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AutoParkViewModel}">
+                <view1:AutoParkView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:InstructorsExplorerViewModel}">
+                <view1:InstructorsExplorerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <view:LoginPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:RegisterViewModel}">
+                <view:RegisterPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:WorkingViewModel}">
+                <view:WorkingPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ProfileViewModel}">
+                <view:ProfilePage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ViewProfileViewModel}">
+                <view:ViewProfilePage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:EditProfileViewModel}">
+                <view:EditProfilePage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:TimeTableViewModel}">
+                <view:TimeTablePage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MyTasksViewModel}">
+                <view:MyTasksPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ViewInstructorsViewModel}">
+                <view:ViewInstructorsPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:InstructorTaskViewModel}">
+                <view1:InstructorTaskView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AdminTasksViewModel}">
+                <view1:AdminTasksView/>
+            </DataTemplate>
+
+            
+            
+        </ResourceDictionary>
+
+
+
+
+
+
+    </Application.Resources>
+
+</Application>

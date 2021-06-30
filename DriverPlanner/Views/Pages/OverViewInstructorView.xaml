@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="DriverPlanner.Views.Pages.OverViewInstructorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DriverPlanner.Views.Pages" 
+             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:OverviewInstructorViewModel}"
+             mc:Ignorable="d" 
+             Height="400"
+             Width="470"
+             d:DesignHeight="400" 
+             d:DesignWidth="470">
+
+    <UserControl.Resources>
+        <c:IndexToImageConverter x:Key="IndexToImage"/>
+    </UserControl.Resources>
+
+    <Grid Visibility="{Binding ContentVisibility}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="{Binding Instance.ImageIndex, Converter={StaticResource IndexToImage}}" Grid.Row="0" Grid.Column="0" Height="180" Width="180" HorizontalAlignment="Left"/>
+
+        <StackPanel Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical" Margin="0,20,0,0" Width="280" VerticalAlignment="Top" Height="auto">
+            <TextBlock Height="70" TextWrapping="Wrap" Margin="0,5,0,0" Style="{StaticResource NameStyle}" Width="280" FontSize="20" Foreground="#E8EBE9" Text="{Binding Instance.FIO}"/>
+            <StackPanel Orientation="Vertical" Height="240">
+                <Label Style="{StaticResource RegLabel}" Width="200" HorizontalAlignment="Left" Foreground="#E8EBE9" Content="Основная информация: "/>
+                <TextBlock Text="{Binding Instance.InstructorID, StringFormat=Идентификатор: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                <TextBlock Text="{Binding Instance.Login, StringFormat=Логин: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                <TextBlock Text="{Binding Instance.InstructorBirth, StringFormat=Дата рождения: dd.MM.yyyy}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                <TextBlock Text="{Binding Instance.GenderInstructor, StringFormat=Гендер: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                <TextBlock Text="{Binding Instance.Car.CarName, StringFormat=Автомобиль: {0}}"  Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+            </StackPanel>
+
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

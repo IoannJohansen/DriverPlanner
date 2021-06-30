@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DriverPlanner.Views.Pages.CheckCarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DriverPlanner.Views.Pages" xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CheckCarViewModel}"
+             mc:Ignorable="d"
+             Height="400" Width="470"
+             d:DesignHeight="400"
+             d:DesignWidth="470">
+
+    <UserControl.Resources>
+        <c:IndexToCarImage x:Key="IndexToImage"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+            <Image Source="{Binding Car.ImageIndex, Converter={StaticResource IndexToImage}}" VerticalAlignment="Top" Height="120" Width="120" HorizontalAlignment="Left" Margin="20"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="4" Style="{StaticResource InfoLabel}" Text="{Binding Car.CarID, StringFormat=Идентификатор: {0}}"/>
+                <TextBlock Margin="4" Style="{StaticResource InfoLabel}" Text="{Binding Car.CarName, StringFormat=Авто: {0}}"/>
+                <TextBlock Margin="4" Style="{StaticResource InfoLabel}" Text="{Binding Car.CategoryName, StringFormat=Категория ТС: {0}}"/>
+                <TextBlock Margin="4" Style="{StaticResource InfoLabel}" Text="{Binding Car.CarYear, StringFormat=Год выпуска: {0}}"/>
+
+              
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

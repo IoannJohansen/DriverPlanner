@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Driver_Planner.Views.Pages.RegisterPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             xmlns:local="clr-namespace:Driver_Planner.Views.Pages" xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:RegisterViewModel}"
+             mc:Ignorable="d"
+             Width="350"
+             Height="450"
+             d:DesignWidth="350"
+             d:DesignHeight="440">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--<StackPanel Style="{StaticResource Logo}" Grid.ColumnSpan="2">
+            <fa5:ImageAwesome Icon="Solid_CarSide" Width="50" Margin="0,0,10,0"/>
+            <TextBlock FontSize="30" Text="Driver Planner" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>-->
+
+        <TextBox MaxLength="30" Text="{Binding FIO}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource InputName}"/>
+        <TextBox MaxLength="12" Text="{Binding Login}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Login}"/>
+        <TextBox MaxLength="12" Text="{Binding Password}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Password}"/>
+        <TextBox MaxLength="12" Text="{Binding ConfirmedPassword}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RepPass}"/>
+
+        <ComboBox ItemsSource="{Binding Genders}" SelectedIndex="{Binding SelectedGender}" Style="{StaticResource GenderCombo}" Grid.Row="4" Grid.ColumnSpan="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=GenderName}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel Height="40" Width="250" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="5">
+            <Label HorizontalAlignment="Right" Foreground="Gray" FontSize="15" VerticalAlignment="Center" Content="Дата рождения "/>
+            <DatePicker SelectedDate="{Binding BirthDate}" Style="{StaticResource CustomDatePicker}"/>
+        </StackPanel>
+        <StackPanel Width="250" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="6" VerticalAlignment="Center">
+            <Label FontSize="15"  Content="EMAIL: " Foreground="Gray"/>
+            <TextBox MaxLength="30" Text="{Binding Email}" Style="{StaticResource DefTextBox}"/>
+        </StackPanel>
+        <TextBlock Text="{Binding ErrorMSG}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource InfoLabel}" Foreground="Red" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Width="380"/>
+        <Button Command="{Binding ConfirmRegisterCommand}" CommandParameter="WorkingSpace" Grid.Row="8" Grid.Column="1" Content="Подтвердить" Style="{StaticResource ConfirmLR}"/>
+        <Button Command="{Binding UpdateViewCommand}" CommandParameter="Login" Grid.Row="9" Grid.Column="0" Content="Отмена" Style="{StaticResource ConfirmLR}"/>
+    </Grid>
+</UserControl>

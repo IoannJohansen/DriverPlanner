@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Driver_Planner.Views.Pages.LoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             xmlns:local="clr-namespace:Driver_Planner.Views.Pages" 
+             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}"
+             mc:Ignorable="d" 
+             d:DesignWidth="600"
+             d:DesignHeight="350" 
+             Width="600"
+             Height="350">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="45*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Style="{StaticResource Logo}" Grid.ColumnSpan="2">
+            <fa5:ImageAwesome Icon="Solid_CarSide" Width="50" Margin="0,0,10,0"/>
+            <TextBlock FontSize="30" Text="Driver Planner" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <TextBox MaxLength="12" Text="{Binding Login}" FontFamily="{StaticResource Myy}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Login}"/>
+        <TextBox MaxLength="12" Text="{Binding Password}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Password}"/>
+        <TextBlock Style="{StaticResource InfoLabel}" VerticalAlignment="Bottom" Width="700" Text="{Binding ErrorMSG}" TextAlignment="Center" Grid.Row="3" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="18" Foreground="Red"/>
+        <Button Grid.ColumnSpan="2" Command="{Binding ConfirmEntryCommand}" HorizontalAlignment="Center" Width="120" CommandParameter="WorkingSpace" Grid.Row="4" Grid.Column="0" Content="Войти" Style="{StaticResource ConfirmLR}"/>
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Vertical" Grid.Row="5" Grid.Column="0">
+            <Label Foreground="Black" Width="auto" HorizontalAlignment="Center" Style="{StaticResource RegLabel}" Content="Нет аккаунта?"/>
+            <Button HorizontalAlignment="Left" Command="{Binding UpdateViewCommand}" Width="120"  CommandParameter="Register" Content="Регистрация" Style="{StaticResource ConfirmLR}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

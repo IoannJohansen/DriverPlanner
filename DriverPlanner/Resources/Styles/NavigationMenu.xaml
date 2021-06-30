@@ -1,0 +1,129 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Storyboard x:Key="sbShowLeftMenu">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1"/>
+    </Storyboard>
+    
+    <Storyboard x:Key="sbHideLeftMenu">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" DecelerationRatio=".9" Duration="0:0:1"/>
+    </Storyboard>
+
+    <Style x:Key="myStyle" TargetType="{x:Type StackPanel}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Background" Value="Black"/>
+                <!--<Setter Property="ToolTip" Value="Kapan"/>
+                <Setter Property="Tag" Value="Kapan"/>-->
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkGreen"/>
+                <!--<Setter Property="Tag" Value="Açıl"/>
+                <Setter Property="ToolTip" Value="Açıl"/>-->
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="myButton" TargetType="{x:Type Button}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                            BorderThickness="5,1,1,1"
+                            BorderBrush="White" 
+                            Background="{x:Null}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="White" />
+                            <Setter TargetName="border" Property="Background" Value="#FF42B60C" />
+                            <Setter TargetName="border" Property="BorderThickness" Value="5,1,1,1" />
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Content" Value="Açıl"/>
+                            <Setter Property="Tag" Value="Açıl"/>
+                            <Setter Property="ToolTip" Value="Açıl"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF32760B" />
+                            <Setter TargetName="border" Property="Background" Value="#FFFDFDFD" />
+                            <Setter TargetName="border" Property="BorderThickness" Value="5,1,1,1" />
+                            <Setter Property="Foreground" Value="#FF32760B"/>
+                            <Setter Property="Content" Value="Kapan"/>
+                            <Setter Property="ToolTip" Value="Kapan"/>
+                            <Setter Property="Tag" Value="Kapan"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+
+    </Style>
+
+    
+    <Style x:Key="spSlideLeft" TargetType="StackPanel">
+
+        <Style.Triggers>
+
+            <EventTrigger x:Name="Enter" RoutedEvent="StackPanel.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.6"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin" To="-150,0,0,0" DecelerationRatio=".9" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            
+        </Style.Triggers>
+
+    </Style>
+
+
+    <Style x:Key="MenuLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="15,0,0,0"/>
+        <Setter Property="Foreground" Value="#FFACB5B9"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
+        
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Foreground" Value="#FFACB5B9"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="MenuDecLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="15,0,0,0"/>
+        <Setter Property="Foreground" Value="#FFACB5B9"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
+
+    </Style>
+
+</ResourceDictionary>

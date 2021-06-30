@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DriverPlannerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IDriverPlannerService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DriverPlannerService.Models" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DriverPlannerService.Exceptions" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDriverPlannerService_TryLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:TryLogin" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_TryLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TryLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_TryRegister_InputMessage">
+    <wsdl:part name="parameters" element="tns:TryRegister" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_TryRegister_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TryRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_TryRegister_EmailDuplicateExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/DriverPlannerService.Exceptions" name="detail" element="q1:EmailDuplicateException" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_TryRegister_LoginDuplicateExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/DriverPlannerService.Exceptions" name="detail" element="q2:LoginDuplicateException" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetGenders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenders" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetGenders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGendersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_UpdateUser_LoginDuplicateExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/DriverPlannerService.Exceptions" name="detail" element="q3:LoginDuplicateException" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetCars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCars" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetCars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetClasses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasses" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetClasses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetInstructors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstructors" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetInstructors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstructorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_PickTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:PickTask" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_PickTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PickTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetMyTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyTasks" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetMyTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_CancelTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelTask" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_CancelTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImage" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_DownloadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadImage" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_DownloadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetFullProfiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullProfiles" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetFullProfiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullProfilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_AddFeedback_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFeedback" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_AddFeedback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetFeedbacks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeedbacks" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetFeedbacks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeedbacksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RemoveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RemoveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RegisterInstrucor_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterInstrucor" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RegisterInstrucor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterInstrucorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_CheckForTaskLimits_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForTaskLimits" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_CheckForTaskLimits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForTaskLimitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_AddCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCar" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_AddCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RemoveCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCar" />
+  </wsdl:message>
+  <wsdl:message name="IDriverPlannerService_RemoveCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDriverPlannerService">
+    <wsdl:operation name="TryLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/TryLogin" message="tns:IDriverPlannerService_TryLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/TryLoginResponse" message="tns:IDriverPlannerService_TryLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TryRegister">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/TryRegister" message="tns:IDriverPlannerService_TryRegister_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/TryRegisterResponse" message="tns:IDriverPlannerService_TryRegister_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDriverPlannerService/TryRegisterEmailDuplicateExceptionFault" name="EmailDuplicateExceptionFault" message="tns:IDriverPlannerService_TryRegister_EmailDuplicateExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDriverPlannerService/TryRegisterLoginDuplicateExceptionFault" name="LoginDuplicateExceptionFault" message="tns:IDriverPlannerService_TryRegister_LoginDuplicateExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetGenders" message="tns:IDriverPlannerService_GetGenders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetGendersResponse" message="tns:IDriverPlannerService_GetGenders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/UpdateUser" message="tns:IDriverPlannerService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/UpdateUserResponse" message="tns:IDriverPlannerService_UpdateUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDriverPlannerService/UpdateUserLoginDuplicateExceptionFault" name="LoginDuplicateExceptionFault" message="tns:IDriverPlannerService_UpdateUser_LoginDuplicateExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCars">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetCars" message="tns:IDriverPlannerService_GetCars_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetCarsResponse" message="tns:IDriverPlannerService_GetCars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetClasses" message="tns:IDriverPlannerService_GetClasses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetClassesResponse" message="tns:IDriverPlannerService_GetClasses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstructors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetInstructors" message="tns:IDriverPlannerService_GetInstructors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetInstructorsResponse" message="tns:IDriverPlannerService_GetInstructors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PickTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/PickTask" message="tns:IDriverPlannerService_PickTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/PickTaskResponse" message="tns:IDriverPlannerService_PickTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetMyTasks" message="tns:IDriverPlannerService_GetMyTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetMyTasksResponse" message="tns:IDriverPlannerService_GetMyTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/CancelTask" message="tns:IDriverPlannerService_CancelTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/CancelTaskResponse" message="tns:IDriverPlannerService_CancelTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetImage" message="tns:IDriverPlannerService_GetImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetImageResponse" message="tns:IDriverPlannerService_GetImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/DownloadImage" message="tns:IDriverPlannerService_DownloadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/DownloadImageResponse" message="tns:IDriverPlannerService_DownloadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullProfiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetFullProfiles" message="tns:IDriverPlannerService_GetFullProfiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetFullProfilesResponse" message="tns:IDriverPlannerService_GetFullProfiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFeedback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/AddFeedback" message="tns:IDriverPlannerService_AddFeedback_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/AddFeedbackResponse" message="tns:IDriverPlannerService_AddFeedback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeedbacks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetFeedbacks" message="tns:IDriverPlannerService_GetFeedbacks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetFeedbacksResponse" message="tns:IDriverPlannerService_GetFeedbacks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetUsers" message="tns:IDriverPlannerService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetUsersResponse" message="tns:IDriverPlannerService_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/RemoveUser" message="tns:IDriverPlannerService_RemoveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/RemoveUserResponse" message="tns:IDriverPlannerService_RemoveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterInstrucor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/RegisterInstrucor" message="tns:IDriverPlannerService_RegisterInstrucor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/RegisterInstrucorResponse" message="tns:IDriverPlannerService_RegisterInstrucor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckForTaskLimits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/CheckForTaskLimits" message="tns:IDriverPlannerService_CheckForTaskLimits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/CheckForTaskLimitsResponse" message="tns:IDriverPlannerService_CheckForTaskLimits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/GetCategories" message="tns:IDriverPlannerService_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/GetCategoriesResponse" message="tns:IDriverPlannerService_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/AddCar" message="tns:IDriverPlannerService_AddCar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/AddCarResponse" message="tns:IDriverPlannerService_AddCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDriverPlannerService/RemoveCar" message="tns:IDriverPlannerService_RemoveCar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDriverPlannerService/RemoveCarResponse" message="tns:IDriverPlannerService_RemoveCar_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IDriverPlannerService" type="tns:IDriverPlannerService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IDriverPlannerService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="TryLogin">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/TryLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TryRegister">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/TryRegister" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EmailDuplicateExceptionFault">
+        <soap12:fault use="literal" name="EmailDuplicateExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="LoginDuplicateExceptionFault">
+        <soap12:fault use="literal" name="LoginDuplicateExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenders">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetGenders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="LoginDuplicateExceptionFault">
+        <soap12:fault use="literal" name="LoginDuplicateExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCars">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetClasses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstructors">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetInstructors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PickTask">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/PickTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyTasks">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetMyTasks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelTask">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/CancelTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImage">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadImage">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/DownloadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullProfiles">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetFullProfiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFeedback">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/AddFeedback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeedbacks">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetFeedbacks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterInstrucor">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/RegisterInstrucor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForTaskLimits">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/CheckForTaskLimits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/GetCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCar">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/AddCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCar">
+      <soap12:operation soapAction="http://tempuri.org/IDriverPlannerService/RemoveCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DriverPlannerService">
+    <wsdl:port name="NetTcpBinding_IDriverPlannerService" binding="tns:NetTcpBinding_IDriverPlannerService">
+      <soap12:address location="net.tcp://localhost:8302/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8302/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-U8C9NLQ\Johny</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

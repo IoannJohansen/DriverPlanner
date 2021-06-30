@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="DriverPlanner.Views.Pages.CreateInstructorPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:fa5="http://schemas.fontawesome.com/icons/" 
+             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DriverPlanner.Views.Pages"
+             d:DataContext="{d:DesignInstance Type=viewmodels:CreateInstructorViewModel}"
+             mc:Ignorable="d" 
+             Height="400"
+             Width="470"
+             d:DesignHeight="400" 
+             d:DesignWidth="470">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="280"/>
+            <RowDefinition Height="170"/>
+        </Grid.RowDefinitions>-->
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0,20,0,0" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Center" Margin="10,0,0,0" Orientation="Vertical">
+                    <TextBox TextWrapping="WrapWithOverflow" Text="{Binding FIO}" Style="{StaticResource InputName}" Margin="0,5,0,0" Height="25" Width="270" HorizontalAlignment="Left"/>
+                    <Label Style="{StaticResource RegLabel}" Width="auto" HorizontalAlignment="Left" Foreground="#E8EBE9" Content="Основная информация: "/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Дата рождения: " Height="20" HorizontalAlignment="Left" Width="110" Margin="0,0,0,0" Foreground="{StaticResource BasicInformationForeground}" Style="{StaticResource NameStyle}" FontSize="14"/>
+                        <DatePicker SelectedDate="{Binding BirthDate}" Style="{StaticResource CustomDatePicker}" Width="150"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Пол" Height="20" HorizontalAlignment="Left" Width="100" Margin="0,0,0,0" Foreground="{StaticResource BasicInformationForeground}" Style="{StaticResource NameStyle}" FontSize="14"/>
+                        <ComboBox SelectedIndex="{Binding SelectedGender}" ItemsSource="{Binding GenderList}" Width="110" Height="30">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=GenderName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Логин" Height="20" HorizontalAlignment="Left" Width="100" Margin="0,0,0,0" Foreground="{StaticResource BasicInformationForeground}" Style="{StaticResource NameStyle}" FontSize="14"/>
+                        <TextBox Text="{Binding Login}" Style="{StaticResource EmptyTextBox}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Автомобиль: " Height="20" HorizontalAlignment="Left" Width="100" Margin="0,0,0,0" Foreground="{StaticResource BasicInformationForeground}" Style="{StaticResource NameStyle}" FontSize="14"/>
+                        <ComboBox SelectedIndex="{Binding SelectedCar}" ItemsSource="{Binding CarList}" Width="140" Height="30">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=CarName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Пароль" Height="20" HorizontalAlignment="Left" Width="100" Margin="0,0,0,0" Foreground="{StaticResource BasicInformationForeground}" Style="{StaticResource NameStyle}" FontSize="14"/>
+                    <TextBox Text="{Binding Password}" Style="{StaticResource EmptyTextBox}"/>
+                </StackPanel>
+                
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="top" Margin="15,20,0,10" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <fa5:ImageAwesome Width="20" Icon="Solid_At" Foreground="#185E9A" Margin="0,0,0,0"/>
+                            <TextBox Text="{Binding Mail}" Margin="7,0,0,0" Style="{StaticResource EmptyTextBox}" Height="30"/>
+                        </StackPanel>
+                        <Button Margin="0,0,0,0" HorizontalAlignment="Right" Width="120" Command="{Binding ConfirmCreateCommand}" Content="Сохранить" Style="{StaticResource ConfirmLR}"/>
+                    <Button Background="{StaticResource LocationForeground}" Margin="0" HorizontalAlignment="Right" Width="40" Command="{Binding CancelCreation}" Content="X" Style="{StaticResource ConfirmLR}"/>
+                    
+                
+                    </StackPanel>
+
+                <TextBlock TextWrapping="Wrap" Height="40" Margin="5" Style="{StaticResource InfoLabel}" VerticalAlignment="Center" Width="300" Text="{Binding ErrorMSG}" TextAlignment="Center" HorizontalAlignment="Center" FontSize="13" Foreground="Red"/>
+            </StackPanel>
+                
+            </StackPanel>
+
+
+        
+    </Grid>
+</UserControl>

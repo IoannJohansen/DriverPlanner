@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="DriverPlanner.App" Collapsed="true">
+    <Position X="55.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.Command.Command" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\Base\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Driver_Planner.Command.LambdaCommand" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\LambdaCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.Command.UpdateViewCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQQAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command\UpdateViewCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.BaseUser" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.User" Collapsed="true">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQAAAAAAAEAICAAgAAEAwABAAgAgAAoUgQAIRAQAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.DPService.Admin" Collapsed="true">
+    <Position X="3" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABCAAgBAAAAAAAAQAAAAAAAAAIEAQAIAAAAg=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.DPService.Instructor" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgASAAQAAAYAgAHAAAAASAAAACAACAAAoEAQCIBASAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.DPService.Gender" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQBAACAAAAAAAAAgAAAAAAhAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.Cars" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAEACAAAAYAAAEAAAAAAAgCAAAAAEgAAACAIAyAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.Categories" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAEAAAAQAAgCAAAAAEAAAAAAICAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.23" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.EmailDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAIAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.LoginDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAQAAEAAAAAAIAEAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.TimeTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAAACAAAAAAEAEAAAAkgAhCAAAQAkAAQIAAYAAgA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.ClassInterval" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAQACQAAAAAAAAAAACAAAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.FeedBacks" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAAAAAEAQAAAAAgAgCAAAAoEAAQIAAYAEgA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.DPService.DriverPlannerServiceClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YIEAIAAQKhAAUgICJEUAAALTAQABgQQQAAGABAAIBQI=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Attribute.BirthDateAtribute" Collapsed="true">
+    <Position X="58.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Attribute\BirthDateAtribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Attribute.FIoAttribute" Collapsed="true">
+    <Position X="60.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Attribute\FIoAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Attribute.LoginAttribute" Collapsed="true">
+    <Position X="64" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Attribute\LoginAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Attribute.Password" Collapsed="true">
+    <Position X="64" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Attribute\Password.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Attribute.PhoneNumber" Collapsed="true">
+    <Position X="53.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Attribute\PhoneNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.ClassDateToBackGroundConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\ClassDateToBackGroundConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.DayOfWeekToString" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\DayOfWeekToString.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.FioToShortFioConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\FioToShortFioConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.IndexToCarImage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\IndexToCarImage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.IndexToImageConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\IndexToImageConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.PropertyToImageConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\PropertyToImageConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.Converters.SocialNetworksConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Converters\SocialNetworksConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.FileDialog.FileSelectorDialog" Collapsed="true">
+    <Position X="58.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\FileDialog\FileSelectorDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.Hash.HashPassword" Collapsed="true">
+    <Position X="53.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Hash\HashPassword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Infrastructure.ImageConverter.ImageConverter" Collapsed="true">
+    <Position X="55.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ImageConverter\ImageConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.MyValidator.MyValidator" Collapsed="true">
+    <Position X="60.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Validator\MyValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.Models.CurrentUserSingleton" Collapsed="true">
+    <Position X="60.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAASAIAAAA=</HashCode>
+      <FileName>Models\Classes\CurrentUserSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Properties.Resources" Collapsed="true">
+    <Position X="60.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DriverPlanner.Properties.Settings" Collapsed="true">
+    <Position X="62.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.AdminTasksViewModel" Collapsed="true">
+    <Position X="45" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAABAAAAABAAABAAAAggICACACQABA=</HashCode>
+      <FileName>ViewModels\AdminTasksViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.AutoParkViewModel" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAiCQAAQAAAABQAgAAIAAAGIAAgAIAIAA=</HashCode>
+      <FileName>ViewModels\AutoParkViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.CheckCarViewModel" Collapsed="true">
+    <Position X="24" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CheckCarViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.CreateCarViewModel" Collapsed="true">
+    <Position X="35.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAMAABIwBQAgEAAAIAAYgAAQAEQAAAAQCAQAAQAY=</HashCode>
+      <FileName>ViewModels\CreateCarViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.CreateInstructorViewModel" Collapsed="true">
+    <Position X="47.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>goQAAMAAAQQIgABEAQAkgAQQAAxAACASABASKSIAACM=</HashCode>
+      <FileName>ViewModels\CreateInstructorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.EditProfileViewModel" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>goAAAEAAQKAMhABEAQAkAIQQBAREAAAQgBASKwIAADE=</HashCode>
+      <FileName>ViewModels\EditProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.InstructorsExplorerViewModel" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAQAAQgAABgAAACAFAGAAQAAAAAIAggAEEAgA=</HashCode>
+      <FileName>ViewModels\InstructorsExplorerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.InstructorTaskViewModel" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAABAAAAAICAAAIAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\InstructorTaskViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="37.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAAAAAEAEAAAAAACAAAABAAACAAAQIAAAIAE=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.MyTasksViewModel" Collapsed="true">
+    <Position X="18.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAgAAAAAAAAAACAAIAAAFAAAgAAAAggICAgACAABQ=</HashCode>
+      <FileName>ViewModels\MyTasksViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.OverviewInstructorViewModel" Collapsed="true">
+    <Position X="29.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\OverviewInstructorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.ProfileViewModel" Collapsed="true">
+    <Position X="40" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.RegisterViewModel" Collapsed="true">
+    <Position X="50.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CgQAAACAACAIAAAEAAAAAATEAAABAAgSAQAQIABAQCE=</HashCode>
+      <FileName>ViewModels\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.TimeTableViewModel" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAgAAECAAQAECAAAQAAAFBAAAQICAIgAAAAAAAAgA=</HashCode>
+      <FileName>ViewModels\TimeTableViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.UsersExplorerViewModel" Collapsed="true">
+    <Position X="21.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAIIAAAAAAEAAAAFIRAAAAAAAAIAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\UsersExplorerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.ViewInstructorsViewModel" Collapsed="true">
+    <Position X="32.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AJAAACCAAAAAAAAABAACBABgAAAKAAQkAACAKkCEABA=</HashCode>
+      <FileName>ViewModels\ViewInstructorsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.ViewProfileViewModel" Collapsed="true">
+    <Position X="42.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAYMAQQCAIgABAAgAEAAYAIAQEQBAQiCAQIgAAAFk=</HashCode>
+      <FileName>ViewModels\ViewProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.WorkingViewModel">
+    <Position X="10" Y="3.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAQAAAAAgCAAAABCAAAAAAABgAAAAAAAAAhAAAA=</HashCode>
+      <FileName>ViewModels\WorkingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Driver_Planner.ViewModels.Base.ViewModel" Collapsed="true">
+    <Position X="27" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Base\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.AdminTasksView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\AdminTasksView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.AutoParkView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\AutoParkView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.CheckCarView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\CheckCarView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.CreateCarView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\CreateCarView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.CreateInstructorPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\CreateInstructorPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.InstructorsExplorerView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\InstructorsExplorerView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.InstructorTaskView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\InstructorTaskView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.OverViewInstructorView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\OverViewInstructorView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DriverPlanner.Views.Pages.UsersExplorerView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\UsersExplorerView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.EditProfilePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\EditProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.LoginPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\LoginPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.MyTasksPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\MyTasksPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.ProfilePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\ProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.RegisterPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\RegisterPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.TimeTablePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\TimeTablePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.ViewInstructorsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\ViewInstructorsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.ViewProfilePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\ViewProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.Views.Pages.WorkingPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="64" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Pages\WorkingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Driver_Planner.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DriverPlanner.DPService.IDriverPlannerService" Collapsed="true">
+    <Position X="0.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>YIEAIAAQKhAAUgICJEUAAALTAQABgQQQAAGABAAIBQI=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DriverPlanner.DPService.IDriverPlannerServiceChannel" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\DPService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DriverPlanner.Models.Enums.EGender" Collapsed="true">
+    <Position X="53.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\Enums\EGender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Driver_Planner.Model.ERole" Collapsed="true">
+    <Position X="55.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAQEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\ERole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

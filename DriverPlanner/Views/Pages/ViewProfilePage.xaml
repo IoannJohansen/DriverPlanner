@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Driver_Planner.Views.Pages.ViewProfilePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Driver_Planner.Views.Pages" xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ViewProfileViewModel}"
+             mc:Ignorable="d" 
+             Height="510"
+             Width="700"
+             d:DesignHeight="510" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <c:SocialNetworksConverter x:Key="StringToSocial"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="330"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding Image}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Height="200" Width="200" Margin="20" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0" Width="300" VerticalAlignment="Top" Height="auto">
+                <TextBlock Height="70" TextWrapping="Wrap" Margin="0,5,0,0" Style="{StaticResource NameStyle}" Width="280" FontSize="20" Foreground="#E8EBE9" Text="{Binding FIO}"/>
+                <StackPanel Orientation="Vertical" Height="240">
+                    <Label Style="{StaticResource RegLabel}" Width="200" HorizontalAlignment="Left" Foreground="#E8EBE9" Content="Основная информация: "/>
+                    <TextBlock Text="{Binding ID, StringFormat=Идентификатор: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                    <TextBlock Text="{Binding Login, StringFormat=Логин: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                    <TextBlock Text="{Binding BirthDate, StringFormat='{}Дата рождения: dd/MM/yyyy'}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                    <TextBlock Text="{Binding GenderName, StringFormat=Гендер: {0}}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                    <TextBlock Text="{Binding CarName, StringFormat=Автомобиль: {0}}" Visibility="{Binding CarVisibility}" Margin="0,0,0,0" Foreground="White" Style="{StaticResource NameStyle}" FontSize="14"/>
+                </StackPanel>
+            </StackPanel>
+
+
+
+            <Button Visibility="{Binding EditBtnVisibilitys}" Command="{Binding GoToEditProfileCommand}" VerticalAlignment="Top" Margin="30,21,0,0" Width="120" Content="Изменить" Style="{StaticResource ConfirmLR}"/>
+
+        </StackPanel>
+
+        <StackPanel Margin="15,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+
+            <Label Style="{StaticResource RegLabel}" Foreground="#E8EBE9" Content="Контакты: " HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <fa5:ImageAwesome Width="20" Icon="Solid_At" Foreground="#185E9A" Margin="0,0,0,0"/>
+                <TextBlock Text="{Binding Email}" Margin="5,4,0,0" HorizontalAlignment="Left" Height="20" Foreground="#185E9A" Style="{StaticResource NameStyle}" FontSize="16"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <fa5:ImageAwesome Width="20" Icon="Solid_Phone" Foreground="#185E9A" Margin="0,0,0,0"/>
+                <TextBlock Text="{Binding Phone, Converter={StaticResource StringToSocial}}" Margin="5,5,0,0" HorizontalAlignment="Left" Height="20" Foreground="#185E9A" Style="{StaticResource NameStyle}" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <fa5:ImageAwesome Width="20" Icon="Brands_Vk" Foreground="#185E9A" Margin="0,0,0,0"/>
+                <TextBlock Text="{Binding VK, Converter={StaticResource StringToSocial}}" Margin="5,4,0,0" HorizontalAlignment="Left" Height="20" Foreground="#185E9A" Style="{StaticResource NameStyle}" FontSize="16"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

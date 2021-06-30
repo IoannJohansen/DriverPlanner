@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Driver_Planner.Views.Pages.ViewInstructorsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Driver_Planner.Views.Pages" 
+             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:ViewInstructorsViewModel}"
+             mc:Ignorable="d" 
+             xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters"
+             Height="520"
+             Width="746"
+             d:DesignHeight="520"
+             d:DesignWidth="746">
+
+    <UserControl.Resources>
+        <c:FioToShortFioConverter x:Key="FioToShort"/>
+        <c:PropertyToImageConverter x:Key="PropertyToImage"/>
+        <c:IndexToImageConverter x:Key="ImageByIndex"/>
+        <c:SocialNetworksConverter x:Key="StirngToSocialNet"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox SelectedIndex="{Binding SelectedINdexInInstrList}" ItemsSource="{Binding ListInstructors}" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Width="235">
+                        <Image Source="{Binding ImageIndex, Converter={StaticResource ImageByIndex}}" Width="60" Height="60"/>
+                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Top" Style="{StaticResource NameStyle}" FontSize="16" Text="{Binding FIO, Converter={StaticResource FioToShort}}" Height="20" Width="175"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid Background="Transparent" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="230"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Visibility="{Binding InfoVisibility}" Height="auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" Width="490" Grid.Column="0" Grid.ColumnSpan="2">
+
+                <StackPanel Orientation="Vertical" Width="490" HorizontalAlignment="Left">
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Margin="0,10,0,20" Style="{StaticResource InfoLabel}" Width="auto" Text="Автоинструктор" FontWeight="Bold"/>
+                    <StackPanel Width="470" Orientation="Horizontal">
+                        <Image Source="{Binding InstructorImage, Converter={StaticResource PropertyToImage}}" Height="140" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Left" Width="140"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock  FontSize="17" Text="{Binding CurrentInstructor.FIO}" Margin="0,10,0,0" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.InstructorBirth, StringFormat=dd.MM.yyyy г.р.}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.InstructorVK, Converter={StaticResource StirngToSocialNet}, StringFormat=ВК: {0}}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.InstructorEMAIL,  StringFormat=EMAIL: {0}}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.InstructorPhone, Converter={StaticResource StirngToSocialNet}, StringFormat=ТЕЛ: {0}}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <TextBlock Margin="0,0,0,12" HorizontalAlignment="Center" Style="{StaticResource InfoLabel}" Width="auto" Text="Автомобиль" FontWeight="Bold"/>
+                    <StackPanel Width="470" Orientation="Horizontal">
+
+                        <Image Source="{Binding CarImage, Converter={StaticResource PropertyToImage}}" Height="140" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Left" Width="140"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="17" Text="{Binding CurrentInstructor.Car.CarName}" Margin="0,10,0,0" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.Car.CarYear, StringFormat={}{0} г.}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                            <TextBlock FontWeight="Regular" FontSize="14" Text="{Binding CurrentInstructor.Car.CategoryName, StringFormat=Категория: {0}}" Style="{StaticResource NameStyle}" Foreground="White"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock Margin="0,0,0,12" HorizontalAlignment="Center" Style="{StaticResource InfoLabel}" Width="auto" Text="Отзывы" FontWeight="Bold"/>
+
+                    <StackPanel Visibility="{Binding FeedBackAddVisibility}" Margin="0,0,0,10" Width="448" Orientation="Horizontal">
+                        <Button Command="{Binding AddFeedbackCommand}" Content="Добавить" Height="40" Margin="0,0,5,0" Style="{StaticResource ConfirmLR}"/>
+                        <TextBox Padding="5" Text="{Binding FeedbackMsg}" MaxLength="250" TextWrapping="Wrap" Height="40" Width="330"/>
+                    </StackPanel>
+                    
+                    <ListBox ItemsSource="{Binding CurrentFeedbacks, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Padding="0,0,0,40" Height="auto" Grid.Column="0" Width="450">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="435" Margin="2" BorderBrush="Black" BorderThickness="1">
+                                    <StackPanel Width="430">
+                                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0" FontWeight="Bold" Width="400" Foreground="Black" Text="{Binding User.FIO, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InfoLabel}" FontSize="14"/>
+                                        <TextBlock TextWrapping="Wrap" Padding="4" FontFamily="{StaticResource Myy}" FontSize="11" Text="{Binding FeedBackMessage}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

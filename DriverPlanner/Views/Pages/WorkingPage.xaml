@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Driver_Planner.Views.Pages.WorkingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fa5="http://schemas.fontawesome.com/icons/" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Driver_Planner.Views.Pages"
+             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:WorkingViewModel}"
+             mc:Ignorable="d" 
+             Width="800"
+             Height="520"
+             d:DesignWidth="800"
+             d:DesignHeight="520">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="sbShowLeftMenu" >
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.1" />
+        </Storyboard>
+        <Storyboard x:Key="sbHideLeftMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:0.1" />
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource WorkingSpaceBG}">
+
+        <Canvas>
+
+            <StackPanel Height="520" Panel.ZIndex="2" Style="{StaticResource spSlideLeft}" x:Name="spLeft" Background="{StaticResource ModernBG}" Width="200" Margin="-150,0,0,0">
+
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" Height="50">
+                    <Button Command="{Binding UpdateViewCommand}" CommandParameter="Table" Content="Расписание" Style="{StaticResource TextButton}" Width="140"/>
+                    <fa5:ImageAwesome Icon="Solid_BusinessTime" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <Button Command="{Binding UpdateViewCommand}" CommandParameter="Tasks" Content="Мои занятия" Style="{StaticResource TextButton}" Width="140"/>
+                    <fa5:ImageAwesome Icon="Solid_Tasks" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+                
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <Button Command="{Binding UpdateViewCommand}" CommandParameter="Profile" Content="Мой профиль" Style="{StaticResource TextButton}" Width="140"/>
+                    <fa5:ImageAwesome Icon="Solid_IdCard" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <Button Command="{Binding UpdateViewCommand}" CommandParameter="Instructors" Content="Наша команда" Style="{StaticResource TextButton}" Width="140"/>
+                    <fa5:ImageAwesome Icon="Solid_Male" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel Visibility="{Binding AdminLabelVisibility}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <StackPanel>
+                        <Button Command="{Binding UpdateViewCommand}" CommandParameter="UserExp" Content="Пользователи" Style="{StaticResource TextButton}" Width="140"/>
+                        <Label Style="{DynamicResource MenuDecLabel}" Content="Администрирование" FontSize="10" Width="140" VerticalAlignment="Center" FontFamily="Source Sans Pro" FontStyle="Italic"/>
+                    </StackPanel>
+                    <fa5:ImageAwesome Icon="Solid_Cogs" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel Visibility="{Binding AdminLabelVisibility}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <StackPanel>
+                        <Button Command="{Binding UpdateViewCommand}" CommandParameter="InstructorsExp" Content="Инструкторы" Style="{StaticResource TextButton}" Width="140"/>
+                        <Label Style="{DynamicResource MenuDecLabel}" Content="Администрирование" FontSize="10" Width="140" VerticalAlignment="Center" FontFamily="Source Sans Pro" FontStyle="Italic"/>
+                    </StackPanel>
+                    <fa5:ImageAwesome Icon="Solid_Cogs" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel Visibility="{Binding AdminLabelVisibility}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <StackPanel>
+                        <Button Command="{Binding UpdateViewCommand}" CommandParameter="AutoPark" Content="Автопарк" Style="{StaticResource TextButton}" Width="140"/>
+                        <Label Style="{DynamicResource MenuDecLabel}" Content="Администрирование" FontSize="10" Width="140" VerticalAlignment="Center" FontFamily="Source Sans Pro" FontStyle="Italic"/>
+                    </StackPanel>
+                    <fa5:ImageAwesome Icon="Solid_Cogs" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+                
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" >
+                    <StackPanel>
+                        <Button Command="{Binding GoToStart}" CommandParameter="Login" Content="Выход" Style="{StaticResource TextButton}" Width="140"/>
+                        <Label Style="{DynamicResource MenuDecLabel}" Content="Смена аккаунта" FontSize="10" Width="140" VerticalAlignment="Center" FontFamily="Source Sans Pro" FontStyle="Italic"/>
+                    </StackPanel>
+                    <fa5:ImageAwesome Icon="Solid_SignOutAlt" Foreground="White" Width="25" Height="25" HorizontalAlignment="Center" Margin="14,10,10,10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+            </StackPanel>
+
+            <Border Margin="50,0,0,0">
+                <StackPanel>
+                    <ContentControl Width="746" Height="510" Content="{Binding CurrentVM}"/>
+                    
+                </StackPanel>
+            </Border>
+
+        </Canvas>
+
+    </Grid>
+
+</UserControl>
