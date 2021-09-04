@@ -1,5 +1,4 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {

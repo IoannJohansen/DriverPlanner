@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         xmlns:fa5="http://schemas.fontawesome.com/icons/" 
         xmlns:vm="clr-namespace:Driver_Planner.ViewModels"
+        xmlns:viewModels="clr-namespace:DriverPlanner.ViewModels"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
@@ -20,7 +21,7 @@
         MaxHeight="520" WindowStyle="ThreeDBorderWindow" ResizeMode="CanMinimize">
 
     <Window.DataContext>
-        <vm:MainViewModel/>
+        <viewModels:MainViewModel/>
     </Window.DataContext>
     
     <Window.Resources>

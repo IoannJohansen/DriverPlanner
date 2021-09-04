@@ -1,8 +1,10 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {
@@ -27,13 +29,13 @@ namespace Driver_Planner.ViewModels
 			#endregion
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case Model.ERole.USER:
+				case ERole.User:
 					AdminLabelVisibility = Visibility.Collapsed;
 					break;
-				case Model.ERole.INSTRUCTOR:
+				case ERole.Instructor:
 					AdminLabelVisibility = Visibility.Collapsed;
 					break;
-				case Model.ERole.ADMIN:
+				case ERole.Admin:
 					AdminLabelVisibility = Visibility.Visible;
 					break;
 				default:
@@ -73,13 +75,13 @@ namespace Driver_Planner.ViewModels
 			{
 				switch (CurrentUserSingleton.CurrentRole)
 				{
-					case Model.ERole.USER:
+					case ERole.User:
 						CurrentVM = new MyTasksViewModel();
 						break;
-					case Model.ERole.INSTRUCTOR:
+					case ERole.Instructor:
 						CurrentVM = new InstructorTaskViewModel();
 						break;
-					case Model.ERole.ADMIN:
+					case ERole.Admin:
 						CurrentVM = new AdminTasksViewModel();
 						break;
 					default:
@@ -101,15 +103,10 @@ namespace Driver_Planner.ViewModels
 			else if ((string)p == "InstructorsExp")
 			{
 				CurrentVM = new InstructorsExplorerViewModel();
-
 			}
-
-
 		}
 		#endregion
-
 		#region GoBackToLogReg
-
 		public ICommand GoToStart { get; }
 		private bool CanExecuteGoToStart(object p) => true;
 		private void OnExecuteGoToStart(object p)
@@ -118,9 +115,7 @@ namespace Driver_Planner.ViewModels
 			CurrentUserSingleton.СurrentUser = null;
 			
 		}
-
 		#endregion
-
 		#endregion
 
 	}

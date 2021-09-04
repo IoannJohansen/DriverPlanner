@@ -1,9 +1,6 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Hash;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.Attribute;
-using DriverPlanner.MyValidator;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +10,10 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Infrastructure.Hash;
+using DriverPlanner.Infrastructure.Validator;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {

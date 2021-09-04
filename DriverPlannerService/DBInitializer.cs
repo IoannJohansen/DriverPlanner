@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DriverPlannerService
 {
-	public class DBInitializer : CreateDatabaseIfNotExists<DriverPlanner_DB>
+	public class DbInitializer : CreateDatabaseIfNotExists<DriverPlanner_DB>
 	{
 		protected override void Seed(DriverPlanner_DB context)
 		{
@@ -20,22 +20,22 @@ namespace DriverPlannerService
 			var genders = new List<Gender>();
 			genders.Add(male);
 			genders.Add(female);
-			genders.ForEach(t => context.GENDERS.Add(t));
+			genders.ForEach(t => context.Genders.Add(t));
 			context.SaveChanges();
 			#endregion
 
 			#region FillCategory
-			var A = new Categories("A", "Мотоциклы");
-			var AM = new Categories("AM", "Мопеды");
-			var B = new Categories("B", "Автомобили с массой до 3,5 тонн и менее");
-			var C = new Categories("C", "Автомобили с массой 3,5 тонны и более");
+			var a = new Categories("A", "Мотоциклы");
+			var am = new Categories("AM", "Мопеды");
+			var b = new Categories("B", "Автомобили с массой до 3,5 тонн и менее");
+			var c = new Categories("C", "Автомобили с массой 3,5 тонны и более");
 
 			var categories = new List<Categories>();
-			categories.Add(A);
-			categories.Add(AM);
-			categories.Add(B);
-			categories.Add(C);
-			categories.ForEach(t => context.CATEGORIES.Add(t));
+			categories.Add(a);
+			categories.Add(am);
+			categories.Add(b);
+			categories.Add(c);
+			categories.ForEach(t => context.Categories.Add(t));
 			context.SaveChanges();
 			#endregion
 
@@ -52,7 +52,7 @@ namespace DriverPlannerService
 			intervals.Add(third);
 			intervals.Add(fourth);
 			intervals.Add(fifth);
-			intervals.ForEach(t => context.INTERVALS.Add(t));
+			intervals.ForEach(t => context.Intervals.Add(t));
 			context.SaveChanges();
 			#endregion
 
@@ -69,15 +69,15 @@ namespace DriverPlannerService
 			//byte[] hondaBytes = ImageConverter.ImageToBytes(hondaImg);
 			#endregion
 
-			var vw = new Cars("VW POLO SEDAN", 2002, B);
-			var lada = new Cars("LADA GRANTA SEDAN", 2010, B);
-			var HONDA = new Cars("HONDA CBR RR", 2004, A);
+			var vw = new Cars("VW POLO SEDAN", 2002, b);
+			var lada = new Cars("LADA GRANTA SEDAN", 2010, b);
+			var honda = new Cars("HONDA CBR RR", 2004, a);
 
 			var cars = new List<Cars>();
 			cars.Add(vw);
 			cars.Add(lada);
-			cars.Add(HONDA);
-			cars.ForEach(t => context.CARS.Add(t));
+			cars.Add(honda);
+			cars.ForEach(t => context.Cars.Add(t));
 			context.SaveChanges();
 			#endregion
 
@@ -87,7 +87,7 @@ namespace DriverPlannerService
 			admin.HashPass = "GZ0s3/R2NXrmXDtikekaRQ==";
 			admin.Login = "admino";
 			admin.Name = "Johny";
-			context.ADMINS.Add(admin);
+			context.Admins.Add(admin);
 			context.SaveChanges();
 
 			#endregion

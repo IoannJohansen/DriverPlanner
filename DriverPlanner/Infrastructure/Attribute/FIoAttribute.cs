@@ -14,7 +14,7 @@ namespace DriverPlanner.Infrastructure.Attribute
 		{
 			string inp = value as string;
 			Regex regex = new Regex(@"(^[А-Яа-яёЁ]+)\s*([А-Яа-яёЁ]+)\s*([А-Яа-яёЁ]+)$");
-			if (regex.IsMatch(inp))
+			if (inp != null && regex.IsMatch(inp))
 				return true;
 			else
 				this.ErrorMessage = "Введите: Фамилия Имя Отчество";

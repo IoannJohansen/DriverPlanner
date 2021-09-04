@@ -1,8 +1,9 @@
-﻿using Driver_Planner.ViewModels;
-using System;
+﻿using System;
 using System.Windows.Input;
+using Driver_Planner.ViewModels;
+using DriverPlanner.ViewModels;
 
-namespace Driver_Planner.Command
+namespace DriverPlanner.Command
 {
 	class UpdateViewCommand : ICommand
 	{

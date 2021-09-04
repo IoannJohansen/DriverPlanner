@@ -14,18 +14,18 @@ namespace DriverPlannerService
 	{
 		public DriverPlanner_DB() : base("DriverPlanner_DB")
 		{
-			Database.SetInitializer(new DBInitializer());
+			Database.SetInitializer(new DbInitializer());
 		}
 
-		public virtual DbSet<Categories> CATEGORIES { get; set; }
-		public virtual DbSet<ClassInterval> INTERVALS { get; set; }
-		public virtual DbSet<Gender> GENDERS { get; set; }
-		public virtual DbSet<Cars> CARS { get; set; }
-		public virtual DbSet<User> USERS { get; set; }
-		public virtual DbSet<Instructor> INSTRUCTORS { get; set; }
-		public virtual DbSet<Admin> ADMINS { get; set; }
-		public virtual DbSet<FeedBacks> FEEDBACKS { get; set; }
-		public virtual DbSet<TimeTable> TIMETABLE { get; set; }
+		public virtual DbSet<Categories> Categories { get; set; }
+		public virtual DbSet<ClassInterval> Intervals { get; set; }
+		public virtual DbSet<Gender> Genders { get; set; }
+		public virtual DbSet<Cars> Cars { get; set; }
+		public virtual DbSet<User> Users { get; set; }
+		public virtual DbSet<Instructor> Instructors { get; set; }
+		public virtual DbSet<Admin> Admins { get; set; }
+		public virtual DbSet<FeedBacks> Feedbacks { get; set; }
+		public virtual DbSet<TimeTable> Timetable { get; set; }
 
 	}
 }

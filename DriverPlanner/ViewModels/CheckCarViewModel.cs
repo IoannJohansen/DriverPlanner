@@ -1,12 +1,8 @@
-﻿using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels;
+using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class CheckCarViewModel : ViewModel
 	{
@@ -25,7 +21,7 @@ namespace Driver_Planner.ViewModels
 
 		#region Props
 
-		public AutoParkViewModel ParrentVM { get; set; }
+		public AutoParkViewModel ParrentVm { get; set; }
 
 		#endregion
 	}

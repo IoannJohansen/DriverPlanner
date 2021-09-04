@@ -1,15 +1,15 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
+using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
+using DriverPlanner.DPService;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class TimeTableViewModel : ViewModel
 	{
@@ -37,13 +37,13 @@ namespace Driver_Planner.ViewModels
 
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.USER:
+				case ERole.User:
 					PickTaskButtonVisibility = Visibility.Visible;
 					break;
-				case ERole.INSTRUCTOR:
+				case ERole.Instructor:
 					PickTaskButtonVisibility = Visibility.Collapsed;
 					break;
-				case ERole.ADMIN:
+				case ERole.Admin:
 					PickTaskButtonVisibility = Visibility.Collapsed;
 					break;
 				default:

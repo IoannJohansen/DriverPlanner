@@ -1,15 +1,15 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
+using DriverPlanner.DPService;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class ViewInstructorsViewModel : ViewModel
 	{
@@ -21,7 +21,7 @@ namespace Driver_Planner.ViewModels
 				ListInstructors = new ObservableCollection<Instructor>(instrData.Item1);
 				FeedbackList = new ObservableCollection<FeedBacks>(instrData.Item2);
 				SelectedINdexInInstrList = -1;
-				if (CurrentUserSingleton.CurrentRole == ERole.USER) FeedBackAddVisibility = Visibility.Visible;
+				if (CurrentUserSingleton.CurrentRole == ERole.User) FeedBackAddVisibility = Visibility.Visible;
 				else FeedBackAddVisibility = Visibility.Collapsed;
 
 				#region Commands init
@@ -145,7 +145,7 @@ namespace Driver_Planner.ViewModels
 		public ICommand AddFeedbackCommand { get; }
 		private bool CanExecuteAddFeedbackCommand(object p)
 		{
-			return (CurrentUserSingleton.CurrentRole == ERole.USER && CurrentInstructor != null && !String.IsNullOrEmpty(FeedbackMsg) && !String.IsNullOrWhiteSpace(FeedbackMsg));
+			return (CurrentUserSingleton.CurrentRole == ERole.User && CurrentInstructor != null && !String.IsNullOrEmpty(FeedbackMsg) && !String.IsNullOrWhiteSpace(FeedbackMsg));
 		}
 
 		private void OnExecuteAddFeedbackCommand(object p)

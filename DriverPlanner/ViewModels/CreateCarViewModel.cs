@@ -1,25 +1,22 @@
-﻿using Driver_Planner.Command;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.Windows.Input;
+using Driver_Planner.ViewModels;
 using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.FileDialog;
 using DriverPlanner.Infrastructure.ImageConverter;
-using DriverPlanner.MyValidator;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using DriverPlanner.Infrastructure.Validator;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class CreateCarViewModel : ViewModel
 	{
-		public CreateCarViewModel(AutoParkViewModel parrentVM)
+		public CreateCarViewModel(AutoParkViewModel parrentVm)
 		{
-			this.ParrentVM = parrentVM;
+			this.ParrentVm = parrentVm;
 			this._newInstance = new Cars();
 
 			using (var dps = new DriverPlannerServiceClient())
@@ -46,15 +43,15 @@ namespace Driver_Planner.ViewModels
 
 		#region Props
 
-		private string _errorMSG;
+		private string _errorMsg;
 
-		public string ErrorMSG
+		public string ErrorMsg
 		{
-			get { return _errorMSG; }
-			set { Set(ref _errorMSG, value); }
+			get { return _errorMsg; }
+			set { Set(ref _errorMsg, value); }
 		}
 
-		public AutoParkViewModel ParrentVM { get; set; }
+		public AutoParkViewModel ParrentVm { get; set; }
 
 		private ObservableCollection<Categories> _categories;
 
@@ -127,18 +124,18 @@ namespace Driver_Planner.ViewModels
 			
 			if (errors!=null)
 			{
-				ErrorMSG = errors;
+				ErrorMsg = errors;
 			}
 			else
 			{
 				using (var dps = new DriverPlannerServiceClient())
 				{
 					dps.AddCar(_newInstance);
-					ParrentVM.CarList = new ObservableCollection<Cars>(dps.GetCars());
+					ParrentVm.CarList = new ObservableCollection<Cars>(dps.GetCars());
 				}
-				ParrentVM.CurrentVM = new CheckCarViewModel();
-				ParrentVM.ListIsEnabled = true;
-				ParrentVM.ControlsVisibility = System.Windows.Visibility.Visible;
+				ParrentVm.CurrentVM = new CheckCarViewModel();
+				ParrentVm.ListIsEnabled = true;
+				ParrentVm.ControlsVisibility = System.Windows.Visibility.Visible;
 			}
 		}
 		#endregion
@@ -165,9 +162,9 @@ namespace Driver_Planner.ViewModels
 		private bool CanExecuteCancelCreationCommand(object p) => true;
 		private void OnExecuteCancelCreationCommand(object p)
 		{
-			ParrentVM.CurrentVM = new CheckCarViewModel();
-			ParrentVM.ListIsEnabled = true;
-			ParrentVM.ControlsVisibility = System.Windows.Visibility.Visible;
+			ParrentVm.CurrentVM = new CheckCarViewModel();
+			ParrentVm.ListIsEnabled = true;
+			ParrentVm.ControlsVisibility = System.Windows.Visibility.Visible;
 		}
 		#endregion
 

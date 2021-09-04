@@ -1,7 +1,7 @@
-﻿namespace Driver_Planner.Model
+﻿namespace DriverPlanner.Models.Enums
 {
 	public enum ERole
 	{
-		USER = 1, INSTRUCTOR, ADMIN
+		User = 1, Instructor, Admin
 	}
 }

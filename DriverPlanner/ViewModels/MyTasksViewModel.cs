@@ -1,12 +1,12 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
+using DriverPlanner.DPService;
+using DriverPlanner.Models.Classes;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class MyTasksViewModel : ViewModel
 	{

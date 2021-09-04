@@ -1,12 +1,8 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.Attribute;
 using DriverPlanner.Infrastructure.FileDialog;
 using DriverPlanner.Infrastructure.ImageConverter;
-using DriverPlanner.MyValidator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +10,11 @@ using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Infrastructure.Validator;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {
@@ -45,7 +46,7 @@ namespace Driver_Planner.ViewModels
 			#region Props assignment
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.USER:
+				case ERole.User:
 					var user = CurrentUserSingleton.СurrentUser as User;
 					FIO = user.FIO;
 					BirthDate = user.BirthDate;
@@ -69,7 +70,7 @@ namespace Driver_Planner.ViewModels
 					CarVisibility = Visibility.Hidden;
 					break;
 
-				case ERole.INSTRUCTOR:
+				case ERole.Instructor:
 					var instructor = CurrentUserSingleton.СurrentUser as Instructor;
 					FIO = instructor.FIO;
 					BirthDate = instructor.InstructorBirth;
@@ -88,13 +89,13 @@ namespace Driver_Planner.ViewModels
 					Phone = instructor.InstructorPhone;
 					VK = instructor.InstructorVK;
 					ID = instructor.InstructorID;
-					SelectedCar = CarList.IndexOf(CarList.Where(t => t.CarID == instructor.CarID).FirstOrDefault());
-					CarName = CarList.Where(t => t.CarID == instructor.CarID).FirstOrDefault().CarName;
+					SelectedCar = CarList.IndexOf(CarList.FirstOrDefault(t => t.CarID == instructor.CarID));
+					CarName = CarList.FirstOrDefault(t => t.CarID == instructor.CarID)?.CarName;
 					Email = instructor.InstructorEMAIL;
 					CarVisibility = Visibility.Visible;
 					break;
 
-				case ERole.ADMIN:
+				case ERole.Admin:
 					CarVisibility = Visibility.Hidden;
 					break;
 				default:
@@ -269,7 +270,7 @@ namespace Driver_Planner.ViewModels
 
 					switch (CurrentUserSingleton.CurrentRole)
 					{
-						case ERole.USER:
+						case ERole.User:
 							#region GenerateNewInstance
 							newU = new User() {
 								FIO = _fio,
@@ -285,7 +286,7 @@ namespace Driver_Planner.ViewModels
 							#endregion
 							break;
 
-						case ERole.INSTRUCTOR:
+						case ERole.Instructor:
 							#region GenerateNewInstance
 							newI = new Instructor()
 							{
@@ -303,7 +304,7 @@ namespace Driver_Planner.ViewModels
 							#endregion
 							break;
 
-						case ERole.ADMIN:
+						case ERole.Admin:
 
 							break;
 						default:
@@ -314,17 +315,17 @@ namespace Driver_Planner.ViewModels
 					
 					switch (CurrentUserSingleton.CurrentRole)
 					{
-						case ERole.USER:
+						case ERole.User:
 							newCurrentUser = dps.UpdateUser(1, newU);
 							CurrentUserSingleton.СurrentUser = (User)newCurrentUser;
 							break;
 
-						case ERole.INSTRUCTOR:
+						case ERole.Instructor:
 							newCurrentUser = dps.UpdateUser(2, newI);
 							CurrentUserSingleton.СurrentUser = (Instructor)newCurrentUser;
 							break;
 						
-						case ERole.ADMIN:
+						case ERole.Admin:
 
 							break;
 

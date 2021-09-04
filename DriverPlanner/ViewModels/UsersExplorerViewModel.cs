@@ -1,16 +1,11 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
+using DriverPlanner.DPService;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class UsersExplorerViewModel : ViewModel
 	{

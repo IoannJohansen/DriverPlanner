@@ -1,13 +1,8 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Hash;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.Attribute;
 using DriverPlanner.Infrastructure.Converters;
 using DriverPlanner.Models.Enums;
-using DriverPlanner.MyValidator;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +10,11 @@ using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Infrastructure.Hash;
+using DriverPlanner.Infrastructure.Validator;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {
@@ -156,7 +156,7 @@ namespace Driver_Planner.ViewModels
 					if ((registeredUser =  dps.TryRegister(user)) != null)
 					{
 						CurrentUserSingleton.СurrentUser = registeredUser;
-						CurrentUserSingleton.CurrentRole = ERole.USER;
+						CurrentUserSingleton.CurrentRole = ERole.User;
 						UpdateViewCommand.Execute(p);
 					}
 					

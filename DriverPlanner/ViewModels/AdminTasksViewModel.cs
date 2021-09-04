@@ -1,9 +1,9 @@
-﻿using Driver_Planner.Models;
+﻿using System.Collections.ObjectModel;
 using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
-using System.Collections.ObjectModel;
+using DriverPlanner.Models.Classes;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class AdminTasksViewModel : ViewModel
 	{

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DriverPlanner.MyValidator
+namespace DriverPlanner.Infrastructure.Validator
 {
 	public static class MyValidator	
 	{
@@ -10,7 +10,7 @@ namespace DriverPlanner.MyValidator
 			var results = new List<ValidationResult>();
 			var context = new ValidationContext(obj);
 
-			if (!Validator.TryValidateObject(obj, context, results, true))
+			if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(obj, context, results, true))
 			{
 				foreach (var error in results)
 				{

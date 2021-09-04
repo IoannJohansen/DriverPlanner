@@ -25,7 +25,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				var cat = ctx.GENDERS.Select(t => t).ToList();
+				var cat = ctx.Genders.Select(t => t).ToList();
 				return cat;
 			}
 		}
@@ -43,7 +43,7 @@ namespace DriverPlannerService
 				using (DriverPlanner_DB db = new DriverPlanner_DB())
 				{
 					#region CheckForUser
-					var findedUser = db.USERS.Include(t=>t.Gender).Where(t => t.Login == login && t.HashPass == hashPasssword).Select(t =>
+					var findedUser = db.Users.Include(t=>t.Gender).Where(t => t.Login == login && t.HashPass == hashPasssword).Select(t =>
 					new
 					{
 						t.FIO,
@@ -80,7 +80,7 @@ namespace DriverPlannerService
 
 					#region CheckForInstructor
 
-					var findedInstructor = db.INSTRUCTORS.Where(t => t.Login == login && t.HashPass == hashPasssword).Include(t=>t.Gender).Include(t=>t.Car).Select(t =>
+					var findedInstructor = db.Instructors.Where(t => t.Login == login && t.HashPass == hashPasssword).Include(t=>t.Gender).Include(t=>t.Car).Select(t =>
 					 new
 					 {
 						 FIO = t.FIO,
@@ -120,7 +120,7 @@ namespace DriverPlannerService
 
 					#region CheckForAdmin
 
-					var findedAdmin = db.ADMINS.Where(t => t.Login == login && t.HashPass == hashPasssword).Select(t =>
+					var findedAdmin = db.Admins.Where(t => t.Login == login && t.HashPass == hashPasssword).Select(t =>
 					new
 					{
 						EMAIL = t.AdminEmail,
@@ -166,33 +166,33 @@ namespace DriverPlannerService
 					#region CheckForDuplicatesOfEmailAndLogin
 
 					#region ForUserTable
-					var resEmailInUser = ctx.USERS.Where(t => t.UserEMAIL == newUser.UserEMAIL).FirstOrDefault();
+					var resEmailInUser = ctx.Users.Where(t => t.UserEMAIL == newUser.UserEMAIL).FirstOrDefault();
 					if (resEmailInUser != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
 
-					var resLoginInUser = ctx.USERS.Where(t => t.Login == newUser.Login).FirstOrDefault();
+					var resLoginInUser = ctx.Users.Where(t => t.Login == newUser.Login).FirstOrDefault();
 					if (resLoginInUser != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#region ForInstructorstable
-					var resEmailInIstructor = ctx.INSTRUCTORS.Where(t => t.InstructorEMAIL == newUser.UserEMAIL).FirstOrDefault();
+					var resEmailInIstructor = ctx.Instructors.Where(t => t.InstructorEMAIL == newUser.UserEMAIL).FirstOrDefault();
 					if (resEmailInIstructor != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
 
-					var resLoginInInstructor = ctx.INSTRUCTORS.Where(t => t.Login == newUser.Login).FirstOrDefault();
+					var resLoginInInstructor = ctx.Instructors.Where(t => t.Login == newUser.Login).FirstOrDefault();
 					if (resLoginInInstructor != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#region ForAdmintable
-					var resEmailInAdmin = ctx.ADMINS.Where(t => t.AdminEmail == newUser.UserEMAIL).FirstOrDefault();
+					var resEmailInAdmin = ctx.Admins.Where(t => t.AdminEmail == newUser.UserEMAIL).FirstOrDefault();
 					if (resEmailInAdmin != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
-					var resLoginInAdmin = ctx.ADMINS.Where(t => t.Login == newUser.Login).FirstOrDefault();
+					var resLoginInAdmin = ctx.Admins.Where(t => t.Login == newUser.Login).FirstOrDefault();
 					if (resLoginInAdmin != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(newUser.UserEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#endregion
-					var registeredUser = ctx.USERS.Add(newUser);
+					var registeredUser = ctx.Users.Add(newUser);
 					Console.WriteLine(registeredUser.FIO);
 					ctx.SaveChanges();
 					return registeredUser;
@@ -220,11 +220,11 @@ namespace DriverPlannerService
 				{
 					case 1:
 						User user = newUserData as User;
-						var userInDB = ctx.USERS.Where(t => t.UserID == user.UserID).FirstOrDefault();
+						var userInDB = ctx.Users.Where(t => t.UserID == user.UserID).FirstOrDefault();
 						if (userInDB.Login != user.Login)
 						{
 							#region Check for free of new login
-							var accWithNewLogin = ctx.USERS.Where(t => t.Login == user.Login && t.UserID != user.UserID).FirstOrDefault();
+							var accWithNewLogin = ctx.Users.Where(t => t.Login == user.Login && t.UserID != user.UserID).FirstOrDefault();
 							if (accWithNewLogin != null)
 							{
 								throw new FaultException<LoginDuplicateException>(new LoginDuplicateException(user.Login), new FaultReason("Этот логин уже занят"));
@@ -246,12 +246,12 @@ namespace DriverPlannerService
 					case 2:
 
 						Instructor instr = newUserData as Instructor;
-						var instInDB = ctx.INSTRUCTORS.Where(t => t.InstructorID == instr.InstructorID).FirstOrDefault();
+						var instInDB = ctx.Instructors.Where(t => t.InstructorID == instr.InstructorID).FirstOrDefault();
 
 						if (instInDB.Login != instr.Login)
 						{
 							#region Check for free of new login
-							var accWithNewLogin = ctx.INSTRUCTORS.Where(t => t.Login == instr.Login && t.InstructorID != instr.InstructorID).FirstOrDefault();
+							var accWithNewLogin = ctx.Instructors.Where(t => t.Login == instr.Login && t.InstructorID != instr.InstructorID).FirstOrDefault();
 
 							if (accWithNewLogin != null)
 							{
@@ -334,7 +334,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				var cars = ctx.CARS.ToList();
+				var cars = ctx.Cars.ToList();
 				return cars;
 			}
 		}
@@ -376,17 +376,17 @@ namespace DriverPlannerService
 			{
 				#region DefSet
 				
-				var dbSet = ctx.TIMETABLE.Where(t => t.DateOfClass == dateClass && t.InstructorID == InstructorID).Include(t => t.Instructor.Car).Include(t=>t.ClassInterval).Include(t=>t.User.Gender).Include(t=>t.Instructor.Gender).ToList();
+				var dbSet = ctx.Timetable.Where(t => t.DateOfClass == dateClass && t.InstructorID == InstructorID).Include(t => t.Instructor.Car).Include(t=>t.ClassInterval).Include(t=>t.User.Gender).Include(t=>t.Instructor.Gender).ToList();
 
-				for (int i = 1; i <= ctx.INTERVALS.Count(); i++)
+				for (int i = 1; i <= ctx.Intervals.Count(); i++)
 				{
 					bool toAdd = true;
 					TimeTable tt = new TimeTable();
-					tt.ClassInterval = ctx.INTERVALS.Find(i);
+					tt.ClassInterval = ctx.Intervals.Find(i);
 					tt.IntervalCode = i;
 					tt.DateOfClass = dateClass;
 					tt.InstructorID = InstructorID;
-					tt.Instructor = ctx.INSTRUCTORS.Where(t => t.InstructorID == InstructorID).Include(t => t.Car).Include(t=>t.Gender).FirstOrDefault();
+					tt.Instructor = ctx.Instructors.Where(t => t.InstructorID == InstructorID).Include(t => t.Car).Include(t=>t.Gender).FirstOrDefault();
 					foreach (var item in dbSet)
 					{
 						if (item.ClassInterval.IntervalNumber == i)
@@ -410,7 +410,7 @@ namespace DriverPlannerService
 			List<Instructor> res = null;
 			using (var ctx = new DriverPlanner_DB())
 			{
-				res = ctx.INSTRUCTORS.Select(t => t).Include(t=>t.Car).Include(t=>t.Gender).ToList();
+				res = ctx.Instructors.Select(t => t).Include(t=>t.Car).Include(t=>t.Gender).ToList();
 				return res;
 			}
 
@@ -432,7 +432,7 @@ namespace DriverPlannerService
 					tRow.User = null;
 					tRow.ClassInterval = null;
 
-					ctx.TIMETABLE.Add(tRow);
+					ctx.Timetable.Add(tRow);
 					ctx.SaveChanges();
 					return true;
 				}
@@ -468,9 +468,9 @@ namespace DriverPlannerService
 				{
 					case 1:
 						var currentUser = user as User;
-						var oldTasks = ctx.TIMETABLE.Where(t => t.UserID == currentUser.UserID && t.DateOfClass < DateTime.Today).Include(t => t.Instructor.Car).Include(t => t.ClassInterval).ToList();
+						var oldTasks = ctx.Timetable.Where(t => t.UserID == currentUser.UserID && t.DateOfClass < DateTime.Today).Include(t => t.Instructor.Car).Include(t => t.ClassInterval).ToList();
 
-						var newTasksOfUser = ctx.TIMETABLE.Where(t => t.UserID == currentUser.UserID && t.DateOfClass >= DateTime.Today).Include(t => t.Instructor.Car).Include(t => t.ClassInterval).OrderBy(t => t.ClassInterval.IntervalNumber).OrderBy(t => t.DateOfClass).ToList();
+						var newTasksOfUser = ctx.Timetable.Where(t => t.UserID == currentUser.UserID && t.DateOfClass >= DateTime.Today).Include(t => t.Instructor.Car).Include(t => t.ClassInterval).OrderBy(t => t.ClassInterval.IntervalNumber).OrderBy(t => t.DateOfClass).ToList();
 
 						var res = new List<TimeTable>(newTasksOfUser);
 						res.AddRange(oldTasks);
@@ -480,9 +480,9 @@ namespace DriverPlannerService
 					case 2:
 						var instructor = user as Instructor;
 
-						var instructorOldTasks = ctx.TIMETABLE.Where(t => t.InstructorID == instructor.InstructorID && t.DateOfClass < DateTime.Today).Include(t => t.ClassInterval).ToList();
+						var instructorOldTasks = ctx.Timetable.Where(t => t.InstructorID == instructor.InstructorID && t.DateOfClass < DateTime.Today).Include(t => t.ClassInterval).ToList();
 
-						var instructorNewTasks = ctx.TIMETABLE.Where(t => t.InstructorID == instructor.InstructorID && t.DateOfClass >= DateTime.Today).Include(t => t.User).Include(t => t.ClassInterval).ToList();
+						var instructorNewTasks = ctx.Timetable.Where(t => t.InstructorID == instructor.InstructorID && t.DateOfClass >= DateTime.Today).Include(t => t.User).Include(t => t.ClassInterval).ToList();
 
 						var result = new List<TimeTable>(instructorNewTasks);
 						result.AddRange(instructorOldTasks);
@@ -490,8 +490,8 @@ namespace DriverPlannerService
 
 					case 3:
 
-						var nonActualTasks = ctx.TIMETABLE.Where(t => t.DateOfClass < DateTime.Today).Include(t => t.User).Include(t => t.Instructor).Include(t => t.ClassInterval).Include(t => t.Instructor.Car).OrderBy(t => t.IntervalCode).OrderByDescending(t => t.DateOfClass).ToList();
-						var actulaTask = ctx.TIMETABLE.Where(t => t.DateOfClass >= DateTime.Today).Include(t => t.User).Include(t => t.Instructor).Include(t => t.ClassInterval).Include(t => t.Instructor.Car).OrderBy(t => t.IntervalCode).OrderBy(t => t.DateOfClass).ToList();
+						var nonActualTasks = ctx.Timetable.Where(t => t.DateOfClass < DateTime.Today).Include(t => t.User).Include(t => t.Instructor).Include(t => t.ClassInterval).Include(t => t.Instructor.Car).OrderBy(t => t.IntervalCode).OrderByDescending(t => t.DateOfClass).ToList();
+						var actulaTask = ctx.Timetable.Where(t => t.DateOfClass >= DateTime.Today).Include(t => t.User).Include(t => t.Instructor).Include(t => t.ClassInterval).Include(t => t.Instructor.Car).OrderBy(t => t.IntervalCode).OrderBy(t => t.DateOfClass).ToList();
 						var allTasks = new List<TimeTable>(actulaTask);
 						allTasks.AddRange(nonActualTasks);
 
@@ -511,8 +511,8 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				var task = ctx.TIMETABLE.Where(t => t.ClassID == taskID).FirstOrDefault();
-				ctx.TIMETABLE.Remove(task);
+				var task = ctx.Timetable.Where(t => t.ClassID == taskID).FirstOrDefault();
+				ctx.Timetable.Remove(task);
 				ctx.SaveChanges();
 			}
 		}
@@ -598,8 +598,8 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				var instructors = ctx.INSTRUCTORS.Include(t => t.Car).ToList();
-				var feedbacks = ctx.FEEDBACKS.Include(t => t.Instructor).Include(t => t.User).ToList();
+				var instructors = ctx.Instructors.Include(t => t.Car).ToList();
+				var feedbacks = ctx.Feedbacks.Include(t => t.Instructor).Include(t => t.User).ToList();
 				
 				return (instructors, feedbacks);
 			}
@@ -616,7 +616,7 @@ namespace DriverPlannerService
 			{
 				try
 				{
-					ctx.FEEDBACKS.Add(newFeedback);
+					ctx.Feedbacks.Add(newFeedback);
 					ctx.SaveChanges();
 					return true;
 				}
@@ -636,7 +636,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				return ctx.FEEDBACKS.Include(t => t.User).Include(t => t.Instructor).ToList();
+				return ctx.Feedbacks.Include(t => t.User).Include(t => t.Instructor).ToList();
 			}
 		}
 
@@ -644,7 +644,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx =new DriverPlanner_DB())
 			{
-				return new List<User>(ctx.USERS.ToList());
+				return new List<User>(ctx.Users.ToList());
 			}
 		}
 
@@ -655,14 +655,14 @@ namespace DriverPlannerService
 				switch (role)
 				{
 					case 1:
-						User forDelete = ctx.USERS.Where(t => t.UserID == id).FirstOrDefault();
-						ctx.USERS.Remove(forDelete);
+						User forDelete = ctx.Users.Where(t => t.UserID == id).FirstOrDefault();
+						ctx.Users.Remove(forDelete);
 						ctx.SaveChanges();
 						break;
 
 					case 2:
-						Instructor forDelet = ctx.INSTRUCTORS.Where(t => t.InstructorID == id).FirstOrDefault();
-						ctx.INSTRUCTORS.Remove(forDelet);
+						Instructor forDelet = ctx.Instructors.Where(t => t.InstructorID == id).FirstOrDefault();
+						ctx.Instructors.Remove(forDelet);
 						ctx.SaveChanges();
 						break;
 
@@ -681,34 +681,34 @@ namespace DriverPlannerService
 					#region CheckForDuplicatesOfEmailAndLogin
 
 					#region ForUserTable
-					var resEmailInUser = ctx.USERS.Where(t => t.UserEMAIL == instructor.InstructorEMAIL).FirstOrDefault();
+					var resEmailInUser = ctx.Users.Where(t => t.UserEMAIL == instructor.InstructorEMAIL).FirstOrDefault();
 					if (resEmailInUser != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
 
-					var resLoginInUser = ctx.USERS.Where(t => t.Login == instructor.Login).FirstOrDefault();
+					var resLoginInUser = ctx.Users.Where(t => t.Login == instructor.Login).FirstOrDefault();
 					if (resLoginInUser != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#region ForInstructorstable
-					var resEmailInIstructor = ctx.INSTRUCTORS.Where(t => t.InstructorEMAIL == instructor.InstructorEMAIL).FirstOrDefault();
+					var resEmailInIstructor = ctx.Instructors.Where(t => t.InstructorEMAIL == instructor.InstructorEMAIL).FirstOrDefault();
 					if (resEmailInIstructor != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
 
-					var resLoginInInstructor = ctx.INSTRUCTORS.Where(t => t.Login == instructor.Login).FirstOrDefault();
+					var resLoginInInstructor = ctx.Instructors.Where(t => t.Login == instructor.Login).FirstOrDefault();
 					if (resLoginInInstructor != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#region ForAdmintable
-					var resEmailInAdmin = ctx.ADMINS.Where(t => t.AdminEmail == instructor.InstructorEMAIL).FirstOrDefault();
+					var resEmailInAdmin = ctx.Admins.Where(t => t.AdminEmail == instructor.InstructorEMAIL).FirstOrDefault();
 					if (resEmailInAdmin != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с такой почтой уже зарегистрирован"));
 
-					var resLoginInAdmin = ctx.ADMINS.Where(t => t.Login == instructor.Login).FirstOrDefault();
+					var resLoginInAdmin = ctx.Admins.Where(t => t.Login == instructor.Login).FirstOrDefault();
 					if (resLoginInAdmin != null) throw new FaultException<EmailDuplicateException>(new EmailDuplicateException(instructor.InstructorEMAIL), new FaultReason("Аккаунт с таким логином уже зарегистрирован"));
 					#endregion
 
 					#endregion
 
-					ctx.INSTRUCTORS.Add(instructor);
+					ctx.Instructors.Add(instructor);
 					ctx.SaveChanges();
 				}
 
@@ -727,7 +727,7 @@ namespace DriverPlannerService
 				try
 				{
 					var calendar = new GregorianCalendar();
-					var tasks = new List<TimeTable>(ctx.TIMETABLE.Where(t => t.UserID == userID).ToList());
+					var tasks = new List<TimeTable>(ctx.Timetable.Where(t => t.UserID == userID).ToList());
 					var startOfSelectedWeek = calendar.GetWeekOfYear(selectedDatetime, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday);
 
 					#region CheckForWeekLimit
@@ -742,7 +742,7 @@ namespace DriverPlannerService
 
 					#region CheckForDailyLimit
 					
-					var dailtyTasks = ctx.TIMETABLE.Where(t => t.DateOfClass == selectedDatetime && t.UserID == userID).ToList();
+					var dailtyTasks = ctx.Timetable.Where(t => t.DateOfClass == selectedDatetime && t.UserID == userID).ToList();
 					if (dailtyTasks.Count != 0) throw new FaultException<InvalidOperationException>(new InvalidOperationException(), "Превышен дневной лимит");
 					#endregion
 
@@ -761,7 +761,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				return ctx.CATEGORIES.ToList();
+				return ctx.Categories.ToList();
 			}
 		}
 
@@ -769,7 +769,7 @@ namespace DriverPlannerService
 		{
 			using (var ctx = new DriverPlanner_DB())
 			{
-				ctx.CARS.Add(newInstance);
+				ctx.Cars.Add(newInstance);
 				ctx.SaveChanges();
 			}
 		}
@@ -781,11 +781,11 @@ namespace DriverPlannerService
 				using (var ctx = new DriverPlanner_DB())
 				{
 					#region Chck for car ocupy
-					var instructorsUsingThisCar = ctx.INSTRUCTORS.Where(t => t.CarID == carID).ToList();
+					var instructorsUsingThisCar = ctx.Instructors.Where(t => t.CarID == carID).ToList();
 					if (instructorsUsingThisCar.Count != 0) throw new FaultException<InvalidOperationException>(new InvalidOperationException(), "Невозможно удалить т.с. используемое инструктором");
 					#endregion
-					var selectedCar = ctx.CARS.Where(t => t.CarID == carID).FirstOrDefault();
-					ctx.CARS.Remove(selectedCar);
+					var selectedCar = ctx.Cars.Where(t => t.CarID == carID).FirstOrDefault();
+					ctx.Cars.Remove(selectedCar);
 					ctx.SaveChanges();
 				}
 			}

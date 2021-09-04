@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DriverPlanner.Views.Pages" xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateCarViewModel}"
+             xmlns:local="clr-namespace:DriverPlanner.Views.Pages" xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels"
+             xmlns:viewModels="clr-namespace:DriverPlanner.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewModels:CreateCarViewModel}"
              mc:Ignorable="d" 
              Height="400" Width="420"
              d:DesignHeight="400" d:DesignWidth="420">
@@ -57,7 +59,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock TextAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap" Text="{Binding ErrorMSG}" Height="60" Width="260" HorizontalAlignment="Center" Foreground="{StaticResource LocationForeground}" Style="{StaticResource InfoLabel}"/>
+            <TextBlock TextAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap" Text="{Binding ErrorMsg}" Height="60" Width="260" HorizontalAlignment="Center" Foreground="{StaticResource LocationForeground}" Style="{StaticResource InfoLabel}"/>
         </StackPanel>
     </Grid>
 </UserControl>

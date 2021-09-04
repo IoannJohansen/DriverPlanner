@@ -5,6 +5,7 @@
              xmlns:view="clr-namespace:Driver_Planner.Views.Pages"
              xmlns:local="clr-namespace:Driver_Planner" 
              xmlns:view1="clr-namespace:DriverPlanner.Views.Pages"
+             xmlns:viewModels="clr-namespace:DriverPlanner.ViewModels"
              StartupUri="Views/Windows/MainWindow.xaml">
 
     <Application.Resources>
@@ -21,15 +22,15 @@
 
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type vm:CreateCarViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:CreateCarViewModel}">
                 <view1:CreateCarView/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:CheckCarViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:CheckCarViewModel}">
                 <view1:CheckCarView/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:OverviewInstructorViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:OverviewInstructorViewModel}">
                 <view1:OverViewInstructorView/>
             </DataTemplate>
             
@@ -37,7 +38,7 @@
                 <view1:CreateInstructorPage/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:UsersExplorerViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:UsersExplorerViewModel}">
                 <view1:UsersExplorerView/>
             </DataTemplate>
 
@@ -45,7 +46,7 @@
                 <view1:AutoParkView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:InstructorsExplorerViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:InstructorsExplorerViewModel}">
                 <view1:InstructorsExplorerView/>
             </DataTemplate>
 
@@ -61,7 +62,7 @@
                 <view:WorkingPage/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:ProfileViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:ProfileViewModel}">
                 <view:ProfilePage/>
             </DataTemplate>
 
@@ -73,23 +74,23 @@
                 <view:EditProfilePage/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:TimeTableViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:TimeTableViewModel}">
                 <view:TimeTablePage/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:MyTasksViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:MyTasksViewModel}">
                 <view:MyTasksPage/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:ViewInstructorsViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:ViewInstructorsViewModel}">
                 <view:ViewInstructorsPage/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:InstructorTaskViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:InstructorTaskViewModel}">
                 <view1:InstructorTaskView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:AdminTasksViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:AdminTasksViewModel}">
                 <view1:AdminTasksView/>
             </DataTemplate>
 

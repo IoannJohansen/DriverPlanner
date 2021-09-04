@@ -1,7 +1,4 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.ImageConverter;
 using System;
@@ -9,6 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {
@@ -19,82 +20,98 @@ namespace Driver_Planner.ViewModels
 
 		}
 
-		private ProfileViewModel _profileVM;
+		private ProfileViewModel _profileVm;
 
-		public ProfileViewModel ProfileVM
+		public ProfileViewModel ProfileVm
 		{
-			get { return _profileVM; }
-			set { Set(ref _profileVM, value); }
+			get { return _profileVm; }
+			set { Set(ref _profileVm, value); }
 		}
 
 		public ViewProfileViewModel(ProfileViewModel prof)
 		{
-			this._profileVM = prof;
+			this._profileVm = prof;
 			DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
 			
 
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.USER:
+				case ERole.User:
 					#region Prop's assignment
 					User curUser = CurrentUserSingleton.СurrentUser as User;
-					FIO = curUser.FIO;
-					BirthDate = curUser.BirthDate;
-					GenderName = curUser.GenderName;
-					Login = curUser.Login;
+					if (curUser != null)
+					{
+						Fio = curUser.FIO;
+						BirthDate = curUser.BirthDate;
+						GenderName = curUser.GenderName;
+						Login = curUser.Login;
 
-					#region Image
-					CurrentImageIndex = curUser.ImageIndex;
-					Image = dps.GetImage(CurrentImageIndex);
-					#endregion
+						#region Image
 
-					Email = curUser.UserEMAIL;
-					Phone = curUser.UserPhone != null ? curUser.UserPhone : "Номер не ввведен";
-					VK = curUser.UserVK != null ? curUser.UserVK : "Ссылка на вк не ввведена";
-					ID = curUser.UserID;
+						CurrentImageIndex = curUser.ImageIndex;
+						Image = dps.GetImage(CurrentImageIndex);
+
+						#endregion
+
+						Email = curUser.UserEMAIL;
+						Phone = curUser.UserPhone ?? "Номер не ввведен";
+						Vk = curUser.UserVK ?? "Ссылка на вк не ввведена";
+						Id = curUser.UserID;
+					}
+
 					#endregion
 
 					CarVisibility = Visibility.Collapsed;
 					EditBtnVisibilitys = Visibility.Visible;
 					break;
 
-				case ERole.INSTRUCTOR:
+				case ERole.Instructor:
 					#region Prop's assignment
 					var carList = dps.GetCars();
 					Instructor curInstructor = CurrentUserSingleton.СurrentUser as Instructor;
-					CarName = carList.Where(t => t.CarID == curInstructor.CarID).FirstOrDefault().CarName;
-					FIO = curInstructor.FIO;
-					BirthDate = curInstructor.InstructorBirth;
-					GenderName = curInstructor.GenderInstructor;
-					Login = curInstructor.Login;
-					#region Image
+					CarName = carList.FirstOrDefault(t => curInstructor != null && t.CarID == curInstructor.CarID)?.CarName;
+					if (curInstructor != null)
+					{
+						Fio = curInstructor.FIO;
+						BirthDate = curInstructor.InstructorBirth;
+						GenderName = curInstructor.GenderInstructor;
+						Login = curInstructor.Login;
 
-					CurrentImageIndex = curInstructor.ImageIndex;
-					Image = dps.GetImage(CurrentImageIndex);
-					
-					#endregion
-					Email = curInstructor.InstructorEMAIL;
-					Phone = curInstructor.InstructorPhone != null ? curInstructor.InstructorPhone : "Номер не ввведен";
-					VK = curInstructor.InstructorVK != null ? curInstructor.InstructorVK : "Ссылка на вк не ввведена";
-					ID = curInstructor.InstructorID;
+						#region Image
+
+						CurrentImageIndex = curInstructor.ImageIndex;
+						Image = dps.GetImage(CurrentImageIndex);
+
+						#endregion
+
+						Email = curInstructor.InstructorEMAIL;
+						Phone = curInstructor.InstructorPhone ?? "Номер не ввведен";
+						Vk = curInstructor.InstructorVK ?? "Ссылка на вк не ввведена";
+						Id = curInstructor.InstructorID;
+					}
+
 					#endregion
 					CarVisibility = Visibility.Visible;
 					EditBtnVisibilitys = Visibility.Visible;
 					
 					break;
 
-				case ERole.ADMIN:
+				case ERole.Admin:
 					#region Prop's assignment
 					Admin curAdmin = CurrentUserSingleton.СurrentUser as Admin;
-					FIO = "Admin";
+					Fio = "Admin";
 					BirthDate = DateTime.Today;
 					GenderName = "Admin";
-					Login = curAdmin.Login;
-					Image = ImageConverter.ImageToBytes(@"..\..\Resources\Images\def.png");
-					Email = curAdmin.AdminEmail;
-					Phone = "Admin";
-					VK = "Admin";
-					ID = curAdmin.AdminID;
+					if (curAdmin != null)
+					{
+						Login = curAdmin.Login;
+						Image = ImageConverter.ImageToBytes(@"..\..\Resources\Images\def.png");
+						Email = curAdmin.AdminEmail;
+						Phone = "Admin";
+						Vk = "Admin";
+						Id = curAdmin.AdminID;
+					}
+
 					#endregion
 					CarVisibility = Visibility.Collapsed;
 					EditBtnVisibilitys = Visibility.Collapsed;
@@ -152,17 +169,17 @@ namespace Driver_Planner.ViewModels
 			set { Set(ref _carVisibility, value); }
 		}
 
-		private int _presonalID;
+		private int _presonalId;
 
-		public int ID
+		public int Id
 		{
-			get { return _presonalID; }
-			set { Set(ref _presonalID, value); }
+			get { return _presonalId; }
+			set { Set(ref _presonalId, value); }
 		}
 
 		private string _fio;
 
-		public string FIO
+		public string Fio
 		{
 			get { return _fio; }
 			set { Set(ref _fio, value); }
@@ -218,7 +235,7 @@ namespace Driver_Planner.ViewModels
 
 		private string _vk;
 
-		public string VK
+		public string Vk
 		{
 			get { return _vk; }
 			set { Set(ref _vk, value); }
@@ -232,10 +249,10 @@ namespace Driver_Planner.ViewModels
 		#region ShowEditProfileMenuCommand
 
 		public ICommand GoToEditProfileCommand { get; }
-		private bool CanExecuteGoToEditProfileCommand(object p) => ProfileVM.CurrentProfileMode is ViewProfileViewModel;
+		private bool CanExecuteGoToEditProfileCommand(object p) => ProfileVm.CurrentProfileMode is ViewProfileViewModel;
 		private void OnExecuteGoToEditProfileCommand(object p)
 		{
-			ProfileVM.CurrentProfileMode = new EditProfileViewModel(_profileVM);
+			ProfileVm.CurrentProfileMode = new EditProfileViewModel(_profileVm);
 		}
 		#endregion
 

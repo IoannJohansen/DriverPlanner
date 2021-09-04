@@ -39,6 +39,7 @@ namespace DriverPlannerService
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="role"></param>
 		/// <param name="user"></param>
 		/// <returns></returns>
 		[OperationContract]
@@ -66,9 +67,10 @@ namespace DriverPlannerService
 		/// Returns classes on selected date with selected instructor
 		/// </summary>
 		/// <param name="dateClass"></param>
+		/// <param name="instructorId"></param>
 		/// <returns></returns>
 		[OperationContract]
-		List<TimeTable> GetClasses(DateTime dateClass, int InstructorID);
+		List<TimeTable> GetClasses(DateTime dateClass, int instructorId);
 
 		/// <summary>
 		/// Returns list of all instructors
@@ -92,7 +94,7 @@ namespace DriverPlannerService
 		
 
 		[OperationContract]
-		void CancelTask(int taskID);
+		void CancelTask(int taskId);
 
 
 		[OperationContract]
@@ -122,7 +124,7 @@ namespace DriverPlannerService
 		void RegisterInstrucor(Instructor instructor);
 
 		[OperationContract]
-		bool CheckForTaskLimits(int userID, DateTime selectedDatetime);
+		bool CheckForTaskLimits(int userId, DateTime selectedDatetime);
 
 		[OperationContract]
 		List<Categories> GetCategories();
@@ -131,6 +133,6 @@ namespace DriverPlannerService
 		void AddCar(Cars newInstance);
 
 		[OperationContract]
-		void RemoveCar(int carID);
+		void RemoveCar(int carId);
 	}
 }

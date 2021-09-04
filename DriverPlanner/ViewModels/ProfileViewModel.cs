@@ -1,6 +1,7 @@
-﻿using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels;
+using Driver_Planner.ViewModels.Base;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class ProfileViewModel : ViewModel
 	{

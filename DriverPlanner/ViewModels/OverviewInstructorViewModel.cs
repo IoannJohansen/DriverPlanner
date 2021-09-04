@@ -1,13 +1,8 @@
-﻿using Driver_Planner.ViewModels.Base;
+﻿using System.Windows;
+using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class OverviewInstructorViewModel : ViewModel
 	{

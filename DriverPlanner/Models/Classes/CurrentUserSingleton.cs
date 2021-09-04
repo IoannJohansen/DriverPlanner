@@ -1,7 +1,7 @@
-﻿using Driver_Planner.Model;
-using DriverPlanner.DPService;
+﻿using DriverPlanner.DPService;
+using DriverPlanner.Models.Enums;
 
-namespace Driver_Planner.Models
+namespace DriverPlanner.Models.Classes
 {
 	class CurrentUserSingleton
 	{
@@ -20,11 +20,11 @@ namespace Driver_Planner.Models
 
 		public static BaseUser СurrentUser { get; set; }
 
-		private static readonly CurrentUserSingleton _userSingleton;
+		private static readonly CurrentUserSingleton UserSingleton;
 
-		public CurrentUserSingleton GetCurrentUserSingleton() => _userSingleton;
+		public CurrentUserSingleton GetCurrentUserSingleton() => UserSingleton;
 
-		static CurrentUserSingleton() => _userSingleton = new CurrentUserSingleton();
+		static CurrentUserSingleton() => UserSingleton = new CurrentUserSingleton();
 
 		private CurrentUserSingleton() { }
 	}

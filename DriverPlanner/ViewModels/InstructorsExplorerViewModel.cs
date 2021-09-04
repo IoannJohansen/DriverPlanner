@@ -1,12 +1,12 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using DriverPlanner.Views.Pages;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Driver_Planner.ViewModels;
+using Driver_Planner.ViewModels.Base;
+using DriverPlanner.Command;
+using DriverPlanner.DPService;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class InstructorsExplorerViewModel : ViewModel
 	{

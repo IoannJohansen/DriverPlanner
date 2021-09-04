@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Driver_Planner.Hash
+namespace DriverPlanner.Infrastructure.Hash
 {
 	public static class HashPassword
 	{

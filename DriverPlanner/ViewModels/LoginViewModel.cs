@@ -1,16 +1,17 @@
-﻿using Driver_Planner.Command;
-using Driver_Planner.Hash;
-using Driver_Planner.Model;
-using Driver_Planner.Models;
-using Driver_Planner.ViewModels.Base;
+﻿using Driver_Planner.ViewModels.Base;
 using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.Attribute;
-using DriverPlanner.MyValidator;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DriverPlanner.Command;
+using DriverPlanner.Infrastructure.Hash;
+using DriverPlanner.Infrastructure.Validator;
+using DriverPlanner.Models.Classes;
+using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels;
 
 namespace Driver_Planner.ViewModels
 {
@@ -94,13 +95,13 @@ namespace Driver_Planner.ViewModels
 					switch (user.Item1)
 					{
 						case 1:
-							CurrentUserSingleton.CurrentRole = ERole.USER;
+							CurrentUserSingleton.CurrentRole = ERole.User;
 							break;
 						case 2:
-							CurrentUserSingleton.CurrentRole = ERole.INSTRUCTOR;
+							CurrentUserSingleton.CurrentRole = ERole.Instructor;
 							break;
 						case 3:
-							CurrentUserSingleton.CurrentRole = ERole.ADMIN;
+							CurrentUserSingleton.CurrentRole = ERole.Admin;
 							break;
 						default:
 							break;

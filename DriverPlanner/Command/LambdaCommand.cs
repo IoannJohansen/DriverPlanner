@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Driver_Planner.Command
+namespace DriverPlanner.Command
 {
-	internal class LambdaCommand : Command
+	internal class LambdaCommand : DriverPlanner.Command.Base.Command
 	{
 		private readonly Action<object> _execute;
 		private readonly Func<object, bool> _canExecute;

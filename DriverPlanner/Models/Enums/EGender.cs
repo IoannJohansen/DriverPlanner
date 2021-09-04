@@ -8,6 +8,6 @@ namespace DriverPlanner.Models.Enums
 {
 	public enum EGender
 	{
-		male = 1, female
+		Male = 1, Female
 	}
 }

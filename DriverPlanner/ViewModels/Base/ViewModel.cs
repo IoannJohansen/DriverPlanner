@@ -7,16 +7,16 @@ namespace Driver_Planner.ViewModels.Base
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void OnPropertyChanged([CallerMemberName] string PropertyName = null)
+		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
-		protected bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+		protected bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
 		{
 			if (Equals(field, value)) return false;
 			field = value;
-			OnPropertyChanged(PropertyName);
+			OnPropertyChanged(propertyName);
 			return true;
 		}
 	}

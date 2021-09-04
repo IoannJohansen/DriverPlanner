@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Driver_Planner.Command
+namespace DriverPlanner.Command.Base
 {
 	internal abstract class Command : ICommand
 	{

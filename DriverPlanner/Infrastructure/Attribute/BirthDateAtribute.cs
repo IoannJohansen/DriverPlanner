@@ -14,7 +14,7 @@ namespace DriverPlanner.Infrastructure.Attribute
 			DateTime birthDate = (DateTime)value;
 			if (birthDate>=DateTime.Today || birthDate.Year < DateTime.Today.Year - 120)
 			{
-				ErrorMessage = "Ваше возраст не соответствует требованиям";
+				ErrorMessage = "Ваш возраст не соответствует требованиям";
 				return false;
 			}
 			else

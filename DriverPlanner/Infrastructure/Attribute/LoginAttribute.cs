@@ -14,7 +14,7 @@ namespace DriverPlanner.Infrastructure.Attribute
 		{
 			string inp = value as string;
 			Regex regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9_]*$");
-			if (regex.IsMatch(inp))
+			if (inp != null && regex.IsMatch(inp))
 				return true;
 			else
 				this.ErrorMessage = "Логин содержит только латиницу(оба регистра) и цифры";
