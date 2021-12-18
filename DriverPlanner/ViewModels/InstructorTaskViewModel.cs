@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+using DriverPlanner.Data;
+using DriverPlanner.Entities;
 using DriverPlanner.Models.Classes;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
@@ -9,7 +10,7 @@ namespace DriverPlanner.ViewModels
 	{
 		public InstructorTaskViewModel()
 		{
-			using (var dps =  new DriverPlannerServiceClient())
+			using (var dps =  new DriverPlannerService())
 			{
 				TaskList = new ObservableCollection<TimeTable>(dps.GetMyTasks(CurrentUserSingleton.СurrentUser, (int)CurrentUserSingleton.CurrentRole));
 				if (TaskList != null && TaskList.Count != 0) SelectedIndex = 0;

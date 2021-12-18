@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Driver_Planner.Views.Pages
+namespace DriverPlanner.Views.Pages
 {
 	/// <summary>
 	/// Логика взаимодействия для RegiserPage.xaml

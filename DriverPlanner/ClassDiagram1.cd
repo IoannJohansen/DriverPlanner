@@ -30,7 +30,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.BaseUser" Collapsed="true">
+  <Class Name="DriverPlanner.Entities.BaseUser" Collapsed="true">
     <Position X="3" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAIAAAA=</HashCode>
@@ -38,28 +38,28 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DriverPlanner.DPService.User" Collapsed="true">
+  <Class Name="DriverPlanner.Entities.User" Collapsed="true">
     <Position X="0.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAQAAAAAAAEAICAAgAAEAwABAAgAgAAoUgQAIRAQAA=</HashCode>
       <FileName>Connected Services\DPService\Reference.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DriverPlanner.DPService.Admin" Collapsed="true">
+  <Class Name="DriverPlanner.Entities.Admin" Collapsed="true">
     <Position X="3" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABCAAgBAAAAAAAAQAAAAAAAAAIEAQAIAAAAg=</HashCode>
       <FileName>Connected Services\DPService\Reference.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DriverPlanner.DPService.Instructor" Collapsed="true">
+  <Class Name="DriverPlanner.Entities.Instructor" Collapsed="true">
     <Position X="5.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgASAAQAAAYAgAHAAAAASAAAACAACAAAoEAQCIBASAA=</HashCode>
       <FileName>Connected Services\DPService\Reference.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DriverPlanner.DPService.Gender" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.Gender" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="64" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQBAACAAAAAAAAAgAAAAAAhAAAAAAEAAAAAAIAAAA=</HashCode>
@@ -67,7 +67,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.Cars" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.Cars" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="60.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgACAEACAAAAYAAAEAAAAAAAgCAAAAAEgAAACAIAyAA=</HashCode>
@@ -75,7 +75,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.Categories" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.Categories" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="62.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAEAAAAQAAgCAAAAAEAAAAAAICAAA=</HashCode>
@@ -83,7 +83,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.23" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.EmailDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.EmailDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="55.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAIAAAEAAAAAAIAAAA=</HashCode>
@@ -91,7 +91,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.LoginDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.LoginDuplicateException" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="53.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAQAAEAAAAAAIAEAA=</HashCode>
@@ -99,7 +99,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.TimeTable" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.TimeTable" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="53.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACABAAACAAAAAAEAEAAAAkgAhCAAAQAkAAQIAAYAAgA=</HashCode>
@@ -107,7 +107,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.ClassInterval" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.ClassInterval" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="55.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAQACQAAAAAAAAAAACAAAgAAAAAAEAAAAAAIAAAA=</HashCode>
@@ -115,7 +115,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.FeedBacks" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.FeedBacks" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="57" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAACAAAAAAEAQAAAAAgAgCAAAAoEAAQIAAYAEgA=</HashCode>
@@ -123,7 +123,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DriverPlanner.DPService.DriverPlannerServiceClient" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="DriverPlanner.Entities.DriverPlannerService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="64" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>YIEAIAAQKhAAUgICJEUAAALTAQABgQQQAAGABAAIBQI=</HashCode>
@@ -565,14 +565,14 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Interface Name="DriverPlanner.DPService.IDriverPlannerService" Collapsed="true">
+  <Interface Name="DriverPlanner.Entities.IDriverPlannerService" Collapsed="true">
     <Position X="0.75" Y="8" Width="1.75" />
     <TypeIdentifier>
       <HashCode>YIEAIAAQKhAAUgICJEUAAALTAQABgQQQAAGABAAIBQI=</HashCode>
       <FileName>Connected Services\DPService\Reference.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DriverPlanner.DPService.IDriverPlannerServiceChannel" Collapsed="true">
+  <Interface Name="DriverPlanner.Entities.IDriverPlannerServiceChannel" Collapsed="true">
     <Position X="0.5" Y="9.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

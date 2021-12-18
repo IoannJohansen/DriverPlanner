@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Driver_Planner
+namespace DriverPlanner.Views.Windows
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

@@ -1,6 +1,4 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using DriverPlanner.Infrastructure.Attribute;
+﻿using DriverPlanner.Infrastructure.Attribute;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
@@ -10,10 +8,12 @@ using DriverPlanner.Command;
 using DriverPlanner.Infrastructure.Hash;
 using DriverPlanner.Infrastructure.Validator;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Entities;
+using DriverPlanner.Data;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class LoginViewModel : ViewModel
 	{
@@ -86,7 +86,7 @@ namespace Driver_Planner.ViewModels
 			}
 			else
 			{
-				DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+				DriverPlannerService dps = new DriverPlannerService();
 				var hashPass = HashPassword.GetHash(Password);
 				var user = dps.TryLogin(Login, hashPass);
 				if (user.Item1 != 0)
@@ -95,13 +95,13 @@ namespace Driver_Planner.ViewModels
 					switch (user.Item1)
 					{
 						case 1:
-							CurrentUserSingleton.CurrentRole = ERole.User;
+							CurrentUserSingleton.CurrentRole = ERole.USER;
 							break;
 						case 2:
-							CurrentUserSingleton.CurrentRole = ERole.Instructor;
+							CurrentUserSingleton.CurrentRole = ERole.INSTRUCTOR;
 							break;
 						case 3:
-							CurrentUserSingleton.CurrentRole = ERole.Admin;
+							CurrentUserSingleton.CurrentRole = ERole.ADMIN;
 							break;
 						default:
 							break;

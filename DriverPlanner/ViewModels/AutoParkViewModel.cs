@@ -1,5 +1,4 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+﻿using DriverPlanner.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,17 +9,18 @@ using System.Windows;
 using System.Windows.Input;
 using DriverPlanner.Command;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Data;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class AutoParkViewModel : ViewModel
 	{
 		public AutoParkViewModel()
 		{
-			using (var dps = new DriverPlannerServiceClient())
-			{
+			var dps = new DriverPlannerService();
 				#region Get of data
-				CarList = new ObservableCollection<Cars>(dps.GetCars());
+			CarList = new ObservableCollection<Cars>(dps.GetCars());
 				SelectedIndex = -1;
 
 				#endregion
@@ -30,7 +30,7 @@ namespace Driver_Planner.ViewModels
 				RemoveCarCommand = new LambdaCommand(OnExecuteRemoveCarCommand, CanExecuteRemoveCarCommand);
 
 				#endregion
-			}
+			
 		}
 
 		#region Props
@@ -126,7 +126,7 @@ namespace Driver_Planner.ViewModels
 		private bool CanExecuteRemoveCarCommand(object p) => SelectedIndex != -1 && SelectedCar != null;
 		private void OnExecuteRemoveCarCommand(object p)
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				try
 				{

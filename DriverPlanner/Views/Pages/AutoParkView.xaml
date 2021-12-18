@@ -5,7 +5,7 @@
              xmlns:fa5="http://schemas.fontawesome.com/icons/" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DriverPlanner.Views.Pages" 
-             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels"
+             xmlns:viewmodels="clr-namespace:DriverPlanner.ViewModels"
              xmlns:c="clr-namespace:DriverPlanner.Infrastructure.Converters" 
              d:DataContext="{d:DesignInstance Type=viewmodels:AutoParkViewModel}"
              mc:Ignorable="d"

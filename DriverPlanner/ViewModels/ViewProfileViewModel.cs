@@ -1,6 +1,4 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using DriverPlanner.Infrastructure.ImageConverter;
+﻿using DriverPlanner.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +6,13 @@ using System.Windows;
 using System.Windows.Input;
 using DriverPlanner.Command;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ImageConverter;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Entities;
+using DriverPlanner.Data;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class ViewProfileViewModel : ViewModel
 	{
@@ -31,12 +32,12 @@ namespace Driver_Planner.ViewModels
 		public ViewProfileViewModel(ProfileViewModel prof)
 		{
 			this._profileVm = prof;
-			DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+			DriverPlannerService dps = new DriverPlannerService();
 			
 
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.User:
+				case ERole.USER:
 					#region Prop's assignment
 					User curUser = CurrentUserSingleton.СurrentUser as User;
 					if (curUser != null)
@@ -65,7 +66,7 @@ namespace Driver_Planner.ViewModels
 					EditBtnVisibilitys = Visibility.Visible;
 					break;
 
-				case ERole.Instructor:
+				case ERole.INSTRUCTOR:
 					#region Prop's assignment
 					var carList = dps.GetCars();
 					Instructor curInstructor = CurrentUserSingleton.СurrentUser as Instructor;
@@ -96,7 +97,7 @@ namespace Driver_Planner.ViewModels
 					
 					break;
 
-				case ERole.Admin:
+				case ERole.ADMIN:
 					#region Prop's assignment
 					Admin curAdmin = CurrentUserSingleton.СurrentUser as Admin;
 					Fio = "Admin";
@@ -105,7 +106,7 @@ namespace Driver_Planner.ViewModels
 					if (curAdmin != null)
 					{
 						Login = curAdmin.Login;
-						Image = ImageConverter.ImageToBytes(@"..\..\Resources\Images\def.png");
+						Image = DriverPlanner.Infrastructure.ImageConverter.ImageConverter.ImageToBytes(@"..\..\Resources\Images\def.png");
 						Email = curAdmin.AdminEmail;
 						Phone = "Admin";
 						Vk = "Admin";

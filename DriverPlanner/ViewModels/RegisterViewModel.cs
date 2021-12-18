@@ -1,8 +1,6 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+﻿using DriverPlanner.Entities;
 using DriverPlanner.Infrastructure.Attribute;
 using DriverPlanner.Infrastructure.Converters;
-using DriverPlanner.Models.Enums;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -15,8 +13,12 @@ using DriverPlanner.Infrastructure.Hash;
 using DriverPlanner.Infrastructure.Validator;
 using DriverPlanner.Models.Classes;
 using DriverPlanner.ViewModels;
+using DriverPlanner.Entities;
+using DriverPlanner.Exceptions;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Data;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class RegisterViewModel : ViewModel
 	{
@@ -33,9 +35,11 @@ namespace Driver_Planner.ViewModels
 		{
 			this.MainVM = mainVM;
 			UpdateViewCommand = new UpdateViewCommand(mainVM);
+            using (var dps = new DriverPlannerService())
+            {
+				Genders = new ObservableCollection<Gender>(dps.GetGenders());
 
-			DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
-			Genders = new ObservableCollection<Gender>(dps.GetGenders());
+            }
 
 			#region Command's init
 
@@ -141,7 +145,7 @@ namespace Driver_Planner.ViewModels
 				try
 				{
 					User user = null;
-					DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+					DriverPlannerService dps = new DriverPlannerService();
 					user = new User();
 					user.FIO = _fio;
 					user.BirthDate = _birthDate;
@@ -156,7 +160,7 @@ namespace Driver_Planner.ViewModels
 					if ((registeredUser =  dps.TryRegister(user)) != null)
 					{
 						CurrentUserSingleton.СurrentUser = registeredUser;
-						CurrentUserSingleton.CurrentRole = ERole.User;
+						CurrentUserSingleton.CurrentRole = ERole.USER;
 						UpdateViewCommand.Execute(p);
 					}
 					

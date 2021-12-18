@@ -118,11 +118,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\DPService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="Data\DBInitializer.cs" />
+    <Compile Include="Data\DriverPlannerService.cs" />
+    <Compile Include="Data\DriverPlanner_DB.cs" />
+    <Compile Include="Entities\Admin.cs" />
+    <Compile Include="Entities\BaseUser.cs" />
+    <Compile Include="Entities\Cars.cs" />
+    <Compile Include="Entities\Categories.cs" />
+    <Compile Include="Entities\ClassInterval.cs" />
+    <Compile Include="Entities\EGender.cs" />
+    <Compile Include="Entities\ERole.cs" />
+    <Compile Include="Entities\FeedBacks.cs" />
+    <Compile Include="Entities\Gender.cs" />
+    <Compile Include="Entities\Instructor.cs" />
+    <Compile Include="Entities\TimeTable.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\EmailDuplicateException.cs" />
+    <Compile Include="Exceptions\LoginDuplicateException.cs" />
+    <Compile Include="ImageConverter\ImageConverter.cs" />
     <Compile Include="Infrastructure\Attribute\BirthDateAtribute.cs" />
     <Compile Include="Infrastructure\Attribute\FIoAttribute.cs" />
     <Compile Include="Infrastructure\Attribute\LoginAttribute.cs" />
@@ -138,7 +151,6 @@
     <Compile Include="Infrastructure\FileDialog\FileSelectorDialog.cs" />
     <Compile Include="Infrastructure\ImageConverter\ImageConverter.cs" />
     <Compile Include="Infrastructure\Validator\MyValidator.cs" />
-    <Compile Include="Models\Enums\EGender.cs" />
     <Compile Include="ViewModels\AdminTasksViewModel.cs" />
     <Compile Include="ViewModels\AutoParkViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
@@ -327,7 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Classes\CurrentUserSingleton.cs" />
-    <Compile Include="Models\Enums\ERole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -346,46 +357,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.BaseUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.Cars.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.Categories.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.FeedBacks.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.Gender.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.Instructor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.TimeTable.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlanner.DPService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DPService\DriverPlannerService.wsdl" />
-    <None Include="Connected Services\DPService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DPService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DPService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DPService\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DPService\item5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DriverPlannerService.Models.BaseUser.datasource" />
     <None Include="Properties\Settings.settings">
@@ -402,13 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\def.png" />
-    <None Include="Connected Services\DPService\item.disco" />
-    <None Include="Connected Services\DPService\configuration91.svcinfo" />
-    <None Include="Connected Services\DPService\configuration.svcinfo" />
-    <None Include="Connected Services\DPService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Resources\Icons\car-solid.svg" />
     <Resource Include="Resources\Images\Cen.jpg" />
     <Resource Include="Resources\Images\cenned.png" />
@@ -418,9 +382,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\DPService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

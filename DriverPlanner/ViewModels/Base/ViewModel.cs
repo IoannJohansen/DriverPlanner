@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Driver_Planner.ViewModels.Base
+namespace DriverPlanner.ViewModels.Base
 {
 	internal class ViewModel : INotifyPropertyChanged
 	{

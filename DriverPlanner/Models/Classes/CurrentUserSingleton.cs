@@ -1,5 +1,4 @@
-﻿using DriverPlanner.DPService;
-using DriverPlanner.Models.Enums;
+﻿using DriverPlanner.Entities;
 
 namespace DriverPlanner.Models.Classes
 {

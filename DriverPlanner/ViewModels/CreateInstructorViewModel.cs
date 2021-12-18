@@ -1,6 +1,4 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
-using DriverPlanner.Infrastructure.Attribute;
+﻿using DriverPlanner.Infrastructure.Attribute;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,8 +12,11 @@ using DriverPlanner.Command;
 using DriverPlanner.Infrastructure.Hash;
 using DriverPlanner.Infrastructure.Validator;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Entities;
+using DriverPlanner.Data;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class CreateInstructorViewModel : ViewModel
 	{
@@ -23,7 +24,7 @@ namespace Driver_Planner.ViewModels
 		{
 			this.ParrentVM = parrentVm;
 			NewInstance = new Instructor();
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				CarList = new List<Cars>(dps.GetCars());
 				GenderList = new List<Gender>(dps.GetGenders());
@@ -198,7 +199,7 @@ namespace Driver_Planner.ViewModels
 				}
 				else
 				{
-					using (var dps = new DriverPlannerServiceClient())
+					using (var dps = new DriverPlannerService())
 					{
 						dps.RegisterInstrucor(_newInstance);
 						ParrentVM.ListInstructors = new ObservableCollection<Instructor>(dps.GetInstructors());

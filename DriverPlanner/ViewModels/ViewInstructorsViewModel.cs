@@ -3,11 +3,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using Driver_Planner.ViewModels.Base;
 using DriverPlanner.Command;
-using DriverPlanner.DPService;
+using DriverPlanner.Data;
+using DriverPlanner.Entities;
+using DriverPlanner.Entities;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
@@ -15,13 +16,13 @@ namespace DriverPlanner.ViewModels
 	{
 		public ViewInstructorsViewModel()
 		{
-			using (DriverPlannerServiceClient dps = new DriverPlannerServiceClient())
+			using (DriverPlannerService dps = new DriverPlannerService())
 			{
 				var instrData = dps.GetFullProfiles();
 				ListInstructors = new ObservableCollection<Instructor>(instrData.Item1);
 				FeedbackList = new ObservableCollection<FeedBacks>(instrData.Item2);
 				SelectedINdexInInstrList = -1;
-				if (CurrentUserSingleton.CurrentRole == ERole.User) FeedBackAddVisibility = Visibility.Visible;
+				if (CurrentUserSingleton.CurrentRole == ERole.USER) FeedBackAddVisibility = Visibility.Visible;
 				else FeedBackAddVisibility = Visibility.Collapsed;
 
 				#region Commands init
@@ -107,7 +108,7 @@ namespace DriverPlanner.ViewModels
 				if (value!=-1)
 				{
 					CurrentInstructor = ListInstructors[value];
-					using (var dps= new DriverPlannerServiceClient())
+					using (var dps= new DriverPlannerService())
 					{
 						CarImage = dps.GetImage(CurrentInstructor.Car.ImageIndex);
 						InstructorImage = dps.GetImage(CurrentInstructor.ImageIndex);
@@ -145,12 +146,12 @@ namespace DriverPlanner.ViewModels
 		public ICommand AddFeedbackCommand { get; }
 		private bool CanExecuteAddFeedbackCommand(object p)
 		{
-			return (CurrentUserSingleton.CurrentRole == ERole.User && CurrentInstructor != null && !String.IsNullOrEmpty(FeedbackMsg) && !String.IsNullOrWhiteSpace(FeedbackMsg));
+			return (CurrentUserSingleton.CurrentRole == ERole.USER && CurrentInstructor != null && !String.IsNullOrEmpty(FeedbackMsg) && !String.IsNullOrWhiteSpace(FeedbackMsg));
 		}
 
 		private void OnExecuteAddFeedbackCommand(object p)
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				string textFeedback = FeedbackMsg;
 

@@ -1,8 +1,7 @@
-﻿using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+﻿using DriverPlanner.Infrastructure.ImageConverter;
+using DriverPlanner.Entities;
 using DriverPlanner.Infrastructure.Attribute;
 using DriverPlanner.Infrastructure.FileDialog;
-using DriverPlanner.Infrastructure.ImageConverter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,10 +12,12 @@ using System.Windows.Input;
 using DriverPlanner.Command;
 using DriverPlanner.Infrastructure.Validator;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Data;
+using DriverPlanner.Exceptions;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class EditProfileViewModel : ViewModel
 	{
@@ -38,7 +39,7 @@ namespace Driver_Planner.ViewModels
 			#endregion
 
 			#region Init
-			DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+			DriverPlannerService dps = new DriverPlannerService();
 			GenderList = new List<Gender>(dps.GetGenders());
 			CarList = new List<Cars>(dps.GetCars());
 			#endregion
@@ -46,7 +47,7 @@ namespace Driver_Planner.ViewModels
 			#region Props assignment
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.User:
+				case ERole.USER:
 					var user = CurrentUserSingleton.СurrentUser as User;
 					FIO = user.FIO;
 					BirthDate = user.BirthDate;
@@ -70,7 +71,7 @@ namespace Driver_Planner.ViewModels
 					CarVisibility = Visibility.Hidden;
 					break;
 
-				case ERole.Instructor:
+				case ERole.INSTRUCTOR:
 					var instructor = CurrentUserSingleton.СurrentUser as Instructor;
 					FIO = instructor.FIO;
 					BirthDate = instructor.InstructorBirth;
@@ -95,7 +96,7 @@ namespace Driver_Planner.ViewModels
 					CarVisibility = Visibility.Visible;
 					break;
 
-				case ERole.Admin:
+				case ERole.ADMIN:
 					CarVisibility = Visibility.Hidden;
 					break;
 				default:
@@ -262,7 +263,7 @@ namespace Driver_Planner.ViewModels
 			{
 				try
 				{
-					DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+					DriverPlannerService dps = new DriverPlannerService();
 
 					BaseUser newCurrentUser = null;
 					User newU = null;
@@ -270,7 +271,7 @@ namespace Driver_Planner.ViewModels
 
 					switch (CurrentUserSingleton.CurrentRole)
 					{
-						case ERole.User:
+						case ERole.USER:
 							#region GenerateNewInstance
 							newU = new User() {
 								FIO = _fio,
@@ -286,7 +287,7 @@ namespace Driver_Planner.ViewModels
 							#endregion
 							break;
 
-						case ERole.Instructor:
+						case ERole.INSTRUCTOR:
 							#region GenerateNewInstance
 							newI = new Instructor()
 							{
@@ -304,7 +305,7 @@ namespace Driver_Planner.ViewModels
 							#endregion
 							break;
 
-						case ERole.Admin:
+						case ERole.ADMIN:
 
 							break;
 						default:
@@ -315,17 +316,17 @@ namespace Driver_Planner.ViewModels
 					
 					switch (CurrentUserSingleton.CurrentRole)
 					{
-						case ERole.User:
+						case ERole.USER:
 							newCurrentUser = dps.UpdateUser(1, newU);
 							CurrentUserSingleton.СurrentUser = (User)newCurrentUser;
 							break;
 
-						case ERole.Instructor:
+						case ERole.INSTRUCTOR:
 							newCurrentUser = dps.UpdateUser(2, newI);
 							CurrentUserSingleton.СurrentUser = (Instructor)newCurrentUser;
 							break;
 						
-						case ERole.Admin:
+						case ERole.ADMIN:
 
 							break;
 
@@ -352,14 +353,14 @@ namespace Driver_Planner.ViewModels
 		{
 			string path = FileSelectorDialog.FileDiaolog();
 			if (path == null) return;
-			var imgToArr = ImageConverter.ImageToBytes(path);
+			var imgToArr = DriverPlanner.Infrastructure.ImageConverter.ImageConverter.ImageToBytes(path);
 			if (imgToArr.Length > 66250)
 			{
 				MessageBox.Show("Допускаются изображения весом до 65 килобайт");
 				return;
 			}
 
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				CurrentImageIndex = dps.DownloadImage(imgToArr, CurrentImageIndex);
 				UserImage = imgToArr;

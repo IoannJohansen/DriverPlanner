@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using Driver_Planner.ViewModels.Base;
 using DriverPlanner.Command;
-using DriverPlanner.DPService;
+using DriverPlanner.Data;
+using DriverPlanner.Entities;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
@@ -11,7 +12,7 @@ namespace DriverPlanner.ViewModels
 	{
 		public UsersExplorerViewModel()
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				RemoveUserCommand = new LambdaCommand(OnExecuteRemoveUserCommand, CanExecuteRemoveUserCommand);
 
@@ -83,7 +84,7 @@ namespace DriverPlanner.ViewModels
 		private bool CanExecuteRemoveUserCommand(object p) => CurrentUser != null;
 		private void OnExecuteRemoveUserCommand(object p)
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				dps.RemoveUser(_currentUser.UserID, 1);
 				UserList.Remove(_currentUser);

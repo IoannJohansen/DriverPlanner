@@ -1,10 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using Driver_Planner.ViewModels;
-using Driver_Planner.ViewModels.Base;
 using DriverPlanner.Command;
-using DriverPlanner.DPService;
+using DriverPlanner.Entities;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.ViewModels;
+using DriverPlanner.Entities;
+using DriverPlanner.Data;
 
 namespace DriverPlanner.ViewModels
 {
@@ -19,7 +21,7 @@ namespace DriverPlanner.ViewModels
 
 			#region Data init
 
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				ListInstructors = new ObservableCollection<Instructor>(dps.GetInstructors());
 				SelectedIndex = -1;
@@ -132,7 +134,7 @@ namespace DriverPlanner.ViewModels
 		private bool CanExecuteRemoveInstructorCommand(object p) => SelectedIndex != -1;
 		private void OnExecuteRemoveInstructorCommand(object p)
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				dps.RemoveUser(SelectedInstructor.InstructorID, 2);
 				ListInstructors.Remove(SelectedInstructor);

@@ -1,12 +1,12 @@
-﻿using Driver_Planner.ViewModels.Base;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using DriverPlanner.Command;
+using DriverPlanner.Entities;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
 using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
 
-namespace Driver_Planner.ViewModels
+namespace DriverPlanner.ViewModels
 {
 	class WorkingViewModel : ViewModel
 	{
@@ -29,13 +29,13 @@ namespace Driver_Planner.ViewModels
 			#endregion
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.User:
+				case ERole.USER:
 					AdminLabelVisibility = Visibility.Collapsed;
 					break;
-				case ERole.Instructor:
+				case ERole.INSTRUCTOR:
 					AdminLabelVisibility = Visibility.Collapsed;
 					break;
-				case ERole.Admin:
+				case ERole.ADMIN:
 					AdminLabelVisibility = Visibility.Visible;
 					break;
 				default:
@@ -75,13 +75,13 @@ namespace Driver_Planner.ViewModels
 			{
 				switch (CurrentUserSingleton.CurrentRole)
 				{
-					case ERole.User:
+					case ERole.USER:
 						CurrentVM = new MyTasksViewModel();
 						break;
-					case ERole.Instructor:
+					case ERole.INSTRUCTOR:
 						CurrentVM = new InstructorTaskViewModel();
 						break;
-					case ERole.Admin:
+					case ERole.ADMIN:
 						CurrentVM = new AdminTasksViewModel();
 						break;
 					default:

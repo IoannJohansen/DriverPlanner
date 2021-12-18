@@ -2,13 +2,13 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
-using Driver_Planner.ViewModels;
-using Driver_Planner.ViewModels.Base;
 using DriverPlanner.Command;
-using DriverPlanner.DPService;
 using DriverPlanner.Infrastructure.FileDialog;
-using DriverPlanner.Infrastructure.ImageConverter;
 using DriverPlanner.Infrastructure.Validator;
+using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
+using DriverPlanner.Entities;
+using DriverPlanner.Data;
 
 namespace DriverPlanner.ViewModels
 {
@@ -19,7 +19,7 @@ namespace DriverPlanner.ViewModels
 			this.ParrentVm = parrentVm;
 			this._newInstance = new Cars();
 
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				this.Categories = new ObservableCollection<Categories>(dps.GetCategories());
 
@@ -32,8 +32,6 @@ namespace DriverPlanner.ViewModels
 
 
 			#endregion
-
-
 		}
 
 		public CreateCarViewModel()
@@ -128,7 +126,7 @@ namespace DriverPlanner.ViewModels
 			}
 			else
 			{
-				using (var dps = new DriverPlannerServiceClient())
+				using (var dps = new DriverPlannerService())
 				{
 					dps.AddCar(_newInstance);
 					ParrentVm.CarList = new ObservableCollection<Cars>(dps.GetCars());
@@ -147,9 +145,9 @@ namespace DriverPlanner.ViewModels
 		{
 			var path = FileSelectorDialog.FileDiaolog();
 			if (path == null) return;
-			var image = ImageConverter.ImageToBytes(path);
+			var image = Infrastructure.ImageConverter.ImageConverter.ImageToBytes(path);
 
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				int newIndex = dps.DownloadImage(image, 0);
 				ImageIndex = newIndex;

@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
-using Driver_Planner.ViewModels.Base;
 using DriverPlanner.Command;
-using DriverPlanner.DPService;
+using DriverPlanner.Data;
+using DriverPlanner.Entities;
 using DriverPlanner.Models.Classes;
-using DriverPlanner.Models.Enums;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
@@ -16,9 +16,9 @@ namespace DriverPlanner.ViewModels
 		public TimeTableViewModel()
 		{
 			#region Data init
-			DriverPlannerServiceClient dps = new DriverPlannerServiceClient();
+			DriverPlannerService dps = new DriverPlannerService();
 			var listInst = dps.GetInstructors();
-			if (listInst!=null && listInst.Length != 0)
+			if (listInst!=null && listInst.Count!= 0)
 			{
 				ListInstructors = new ObservableCollection<Instructor>(listInst);
 				var tmpTask = dps.GetClasses(_selectedDate, ListInstructors[SelectedInstructor].InstructorID);
@@ -37,13 +37,13 @@ namespace DriverPlanner.ViewModels
 
 			switch (CurrentUserSingleton.CurrentRole)
 			{
-				case ERole.User:
+				case ERole.USER:
 					PickTaskButtonVisibility = Visibility.Visible;
 					break;
-				case ERole.Instructor:
+				case ERole.INSTRUCTOR:
 					PickTaskButtonVisibility = Visibility.Collapsed;
 					break;
-				case ERole.Admin:
+				case ERole.ADMIN:
 					PickTaskButtonVisibility = Visibility.Collapsed;
 					break;
 				default:
@@ -83,7 +83,7 @@ namespace DriverPlanner.ViewModels
 				Set(ref _selectedDate, value);
 				if (ListInstructors != null && ListInstructors.Count != 0)
 				{
-					using (DriverPlannerServiceClient dps = new DriverPlannerServiceClient())
+					using (DriverPlannerService dps = new DriverPlannerService())
 					{
 						TaskList = new ObservableCollection<TimeTable>(dps.GetClasses(_selectedDate, ListInstructors[SelectedInstructor].InstructorID));
 						SelectedIndexOfTask = -1;
@@ -166,8 +166,7 @@ namespace DriverPlanner.ViewModels
 		{
 			try
 			{
-				using (var dps = new DriverPlannerServiceClient())
-				{
+				var dps = new DriverPlannerService();
 					SelectedClass.UserID = ((User)CurrentUserSingleton.СurrentUser).UserID;
 					if (dps.CheckForTaskLimits(((User)CurrentUserSingleton.СurrentUser).UserID, SelectedClass.DateOfClass))
 					{
@@ -176,7 +175,7 @@ namespace DriverPlanner.ViewModels
 							SelectedDate = SelectedDate;
 						}
 					}
-				}
+				
 			}
 			catch (FaultException<InvalidOperationException> ex)
 			{

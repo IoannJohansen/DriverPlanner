@@ -1,4 +1,5 @@
-﻿using DriverPlanner.DPService;
+﻿using DriverPlanner.Data;
+using DriverPlanner.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -18,13 +19,13 @@ namespace DriverPlanner.Infrastructure.Converters
 			if (indexOFimage==0)
 			{
 
-				const string defPath = @"D:\Desktop\Labs\DriverPlanner\DriverPlanner\Resources\Images\def.png";
-				var defImg = ImageConverter.ImageConverter.ImageToBytes(defPath);
+				const string defPath = @"D:\\Desktop\\4d671cfe78cbb63a617875e1f6023157.jpeg";
+				var defImg = DriverPlanner.ImageConverter.ImageConverter.ImageToBytes(defPath);
 				return defImg;
 			}
 			else
 			{
-				using (DriverPlannerServiceClient dps = new DriverPlannerServiceClient())
+				using (DriverPlannerService dps = new DriverPlannerService())
 				{
 					return dps.GetImage(indexOFimage);
 				}

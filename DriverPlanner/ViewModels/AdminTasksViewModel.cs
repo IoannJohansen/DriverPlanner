@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+using DriverPlanner.Data;
+using DriverPlanner.Entities;
+using DriverPlanner.Entities;
 using DriverPlanner.Models.Classes;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
@@ -9,7 +11,7 @@ namespace DriverPlanner.ViewModels
 	{
 		public AdminTasksViewModel()
 		{
-			using (var dps = new DriverPlannerServiceClient())
+			using (var dps = new DriverPlannerService())
 			{
 				AllTasks = new ObservableCollection<TimeTable>(dps.GetMyTasks(null, (int)CurrentUserSingleton.CurrentRole));
 				
@@ -85,7 +87,7 @@ namespace DriverPlanner.ViewModels
 				Set(ref _selectedClass, value);
 				if (_selectedClass!=null)
 				{
-					using (var dps = new DriverPlannerServiceClient())
+					using (var dps = new DriverPlannerService())
 					{
 						CarImage = dps.GetImage(_selectedClass.Instructor.Car.ImageIndex);
 						InstructorImage = dps.GetImage(_selectedClass.Instructor.ImageIndex);

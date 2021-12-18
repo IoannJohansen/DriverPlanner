@@ -1,6 +1,6 @@
-﻿using Driver_Planner.ViewModels;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+﻿using DriverPlanner.Entities;
+using DriverPlanner.ViewModels;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {

@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Driver_Planner.Views.Pages.EditProfilePage"
+<UserControl x:Class="DriverPlanner.Views.Pages.EditProfilePage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Driver_Planner.Views.Pages" 
+              
              xmlns:fa5="http://schemas.fontawesome.com/icons/" 
-             xmlns:viewmodels="clr-namespace:Driver_Planner.ViewModels" 
+              
              d:DataContext="{d:DesignInstance Type=viewmodels:EditProfileViewModel}"
              mc:Ignorable="d" 
              Height="510"

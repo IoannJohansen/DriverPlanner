@@ -1,5 +1,5 @@
-﻿using Driver_Planner.ViewModels;
-using Driver_Planner.ViewModels.Base;
+﻿using DriverPlanner.ViewModels.Base;
+using DriverPlanner.ViewModels;
 
 namespace DriverPlanner.ViewModels
 {

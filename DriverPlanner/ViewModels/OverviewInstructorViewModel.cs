@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using Driver_Planner.ViewModels.Base;
-using DriverPlanner.DPService;
+using DriverPlanner.Entities;
+using DriverPlanner.ViewModels.Base;
 
 namespace DriverPlanner.ViewModels
 {
